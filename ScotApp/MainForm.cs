@@ -1,0 +1,505 @@
+﻿using System;
+using System.IO.Ports;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
+
+using ScotApp.Forms;
+
+namespace ScotApp
+{
+    public partial class MainForm : Form
+    {
+        #region Atributes
+
+        private SerialPort comPort = new SerialPort();
+
+        #endregion
+
+        public MainForm()
+        {
+            InitializeComponent();
+            this.comPort.DataReceived += comPort_DataReceived;
+        }
+
+        #region Eventos del formulario
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            this.updateKeysToolTip();
+            //se actualizan las configuraciones del terminal
+            this.cbLocalEcho.Checked = General.Default.LOCAL_ECHO;
+            switch (General.Default.HEX_LOG)
+            {
+                case "Off":
+                    this.rbOff.Checked = true;
+                    break;
+                case "NonAscii":
+                    this.rbNonAscii.Checked = true;
+                    break;
+                case "All":
+                    this.rbAll.Checked = true;
+                    break;
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.comPort.IsOpen)
+                this.closeComPort();
+        }
+
+        #endregion
+
+        #region Eventos del menú principal
+
+        private void miNewConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miOpenConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miCloseConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miSaveConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miSaveAsConnection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miPrintTerminal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void miOpenPort_Click(object sender, EventArgs e)
+        {
+            if (this.comPort.IsOpen)
+                this.closeComPort();
+            InitComPortForm initComPortForm = new InitComPortForm();
+            if (DialogResult.OK == initComPortForm.ShowDialog())
+            {
+                this.comPort.PortName = ComPort.Default.PORT_NAME;
+                this.comPort.BaudRate = ComPort.Default.BAUD_RATE;
+                this.comPort.Parity = ComPort.Default.PARITY;
+                this.comPort.DataBits = ComPort.Default.DATA_BITS;
+                this.comPort.StopBits = ComPort.Default.STOP_BITS;
+                try
+                {
+                    this.comPort.Open();
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to open port", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                this.miClosePort.Enabled = true;
+                this.miDtr.Checked = this.cbDtr.Checked = this.comPort.DtrEnable;
+                this.miDtr.Enabled = this.cbDtr.Enabled = true;
+                this.miRts.Checked = this.cbRts.Checked = this.comPort.RtsEnable;
+                this.miRts.Enabled = this.cbRts.Enabled = true;
+                this.miSendKey1.Enabled = this.bSendKey1.Enabled = true;
+                this.miSendKey2.Enabled = this.bSendKey2.Enabled = true;
+                this.miSendKey3.Enabled = this.bSendKey3.Enabled = true;
+                this.miSendKey4.Enabled = this.bSendKey4.Enabled = true;
+                this.miSendKey5.Enabled = this.bSendKey5.Enabled = true;
+                this.miSendKey6.Enabled = this.bSendKey6.Enabled = true;
+                this.miSendKey7.Enabled = this.bSendKey7.Enabled = true;
+                this.miSendKey8.Enabled = this.bSendKey8.Enabled = true;
+                this.bSendMessage.Enabled = true;
+                this.lState.Text = "Com Port Opened: " + this.comPort.PortName + " - " + this.comPort.BaudRate.ToString();
+            }
+        }
+
+        private void miClosePort_Click(object sender, EventArgs e)
+        {
+            this.closeComPort();
+        }
+
+        private void miDtr_Click(object sender, EventArgs e)
+        {
+            this.toggleDtr();
+        }
+
+        private void miRts_Click(object sender, EventArgs e)
+        {
+            this.toggleRts();
+        }
+
+        private void miSendKey1_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_1);
+        }
+
+        private void miSendKey2_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_2);
+        }
+
+        private void miSendKey3_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_3);
+        }
+
+        private void miSendKey4_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_4);
+        }
+
+        private void miSendKey5_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_5);
+        }
+
+        private void miSendKey6_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_6);
+        }
+
+        private void miSendKey7_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_7);
+        }
+
+        private void miSendKey8_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_8);
+        }
+
+        private void miSetPushKeys_Click(object sender, EventArgs e)
+        {
+            this.setPushKeys();
+        }
+
+        #endregion
+
+        #region Eventos de los botones de "keys"
+
+        private void bSendKey1_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_1);
+        }
+
+        private void bSendKey2_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_2);
+        }
+
+        private void bSendKey3_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_3);
+        }
+
+        private void bSendKey4_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_4);
+        }
+
+        private void bSendKey5_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_5);
+        }
+
+        private void bSendKey6_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_6);
+        }
+
+        private void bSendKey7_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_7);
+        }
+
+        private void bSendKey8_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_8);
+        }
+
+        private void bSetPushKeys_Click(object sender, EventArgs e)
+        {
+            this.setPushKeys();
+        }
+
+        #endregion
+
+        #region Eventos de las señales de control
+
+        private void cbDtr_CheckedChanged(object sender, EventArgs e)
+        {
+            this.toggleDtr();
+        }
+
+        private void cbRts_CheckedChanged(object sender, EventArgs e)
+        {
+            this.toggleRts();
+        }
+
+        #endregion
+
+        #region Eventos para envio de un mensaje
+
+        private void tbMessage_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((this.bSendMessage.Enabled) && (e.KeyCode == Keys.Enter))
+                this.sendLiteralMessage(this.tbMessage.Text);
+        }
+
+        private void bSendMessage_Click(object sender, EventArgs e)
+        {
+            this.sendLiteralMessage(this.tbMessage.Text);
+        }
+
+        #endregion
+
+        #region Eventos de los controles del terminal
+
+        private void cbLocalEcho_CheckedChanged(object sender, EventArgs e)
+        {
+            General.Default.LOCAL_ECHO = this.cbLocalEcho.Checked;
+            General.Default.Save();
+        }
+
+        private void rbOff_CheckedChanged(object sender, EventArgs e)
+        {
+            General.Default.HEX_LOG = "Off";
+            General.Default.Save();
+        }
+
+        private void rbNonAscii_CheckedChanged(object sender, EventArgs e)
+        {
+            General.Default.HEX_LOG = "NonAscii";
+            General.Default.Save();
+        }
+
+        private void rbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            General.Default.HEX_LOG = "All";
+            General.Default.Save();
+        }
+
+        private void bPrintTerminal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bClearTerminal_Click(object sender, EventArgs e)
+        {
+            this.tbTerminal.Text = "";
+        }
+
+        #endregion
+
+        #region Eventos del comPort
+
+        void comPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            if (this.tbTerminal.InvokeRequired)
+                this.Invoke(new SerialDataReceivedEventHandler(this.comPort_DataReceived), new object[] { sender, e });
+            else
+            {
+                byte[] data = new byte[this.comPort.BytesToRead];
+                this.comPort.Read(data, 0, this.comPort.BytesToRead);
+                this.printToTerminal(data, data.Length);
+            }
+        }
+
+        #endregion
+
+        #region Métodos privados
+
+        private void closeComPort()
+        {
+            this.comPort.Close();
+            this.miClosePort.Enabled = false;
+            this.miDtr.Checked = this.cbDtr.Checked = false;
+            this.miDtr.Enabled = this.cbDtr.Enabled = false;
+            this.miRts.Checked = this.cbRts.Checked = false;
+            this.miRts.Enabled = this.cbRts.Enabled = false;
+            this.miSendKey1.Enabled = this.bSendKey1.Enabled = false;
+            this.miSendKey2.Enabled = this.bSendKey2.Enabled = false;
+            this.miSendKey3.Enabled = this.bSendKey3.Enabled = false;
+            this.miSendKey4.Enabled = this.bSendKey4.Enabled = false;
+            this.miSendKey5.Enabled = this.bSendKey5.Enabled = false;
+            this.miSendKey6.Enabled = this.bSendKey6.Enabled = false;
+            this.miSendKey7.Enabled = this.bSendKey7.Enabled = false;
+            this.miSendKey8.Enabled = this.bSendKey8.Enabled = false;
+            this.bSendMessage.Enabled = false;
+            this.lState.Text = "Com Port Closed";
+        }
+
+        private void updateKeysToolTip()
+        {
+            this.toolTip.SetToolTip(this.bSendKey1, PushKeys.Default.KEY_1);
+            this.toolTip.SetToolTip(this.bSendKey2, PushKeys.Default.KEY_2);
+            this.toolTip.SetToolTip(this.bSendKey3, PushKeys.Default.KEY_3);
+            this.toolTip.SetToolTip(this.bSendKey4, PushKeys.Default.KEY_4);
+            this.toolTip.SetToolTip(this.bSendKey5, PushKeys.Default.KEY_5);
+            this.toolTip.SetToolTip(this.bSendKey6, PushKeys.Default.KEY_6);
+            this.toolTip.SetToolTip(this.bSendKey7, PushKeys.Default.KEY_7);
+            this.toolTip.SetToolTip(this.bSendKey8, PushKeys.Default.KEY_8);
+        }
+
+        private void setPushKeys()
+        {
+            SetPushKeysForm setPushKeysForm = new SetPushKeysForm();
+            if (DialogResult.OK == setPushKeysForm.ShowDialog())
+                this.updateKeysToolTip();
+        }
+
+        private void sendLiteralMessage(string message)
+        {
+            if (!ValidateMessage(message))
+                MessageBox.Show("Message format is not correct", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (this.sendMessage(message))
+                this.tbMessage.Text = "";
+        }
+
+        private bool sendMessage(string message)
+        {
+            byte[] dataToSend = new byte[message.Length];
+            int j = 0;
+            for (int i = 0; i < message.Length; i++, j++)
+                if (message[i].Equals('\\'))
+                    if (message[i + 1].Equals('\\'))
+                    {
+                        dataToSend[j] = (byte)'\\';
+                        i += 1;
+                    }
+                    else
+                    {
+                        string hexString = message.Substring(i + 1, 2).ToUpper();
+                        int hexValue = (char.IsLetter(hexString[0])) ? (hexString[0] - 55) * 16 : (hexString[0] - 48) * 16;
+                        hexValue += (char.IsLetter(hexString[1])) ? hexString[1] - 55 : hexString[1] - 48;
+                        dataToSend[j] = (byte)hexValue;
+                        i += 2;
+                    }
+                else
+                    dataToSend[j] = (byte)message[i];
+            try
+            {
+                this.comPort.Write(dataToSend, 0, j);
+                if (this.cbLocalEcho.Checked)
+                    this.printToTerminal(dataToSend, j);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void printToTerminal(byte[] dataToPrint, int lenght)
+        {
+            for (int i = 0; i < lenght; i++)
+            {
+                if (this.rbOff.Checked)
+                {
+                    if (!char.IsControl((char)dataToPrint[i]))
+                        this.tbTerminal.Text += (char)dataToPrint[i];
+                }
+                else if ((this.rbNonAscii.Checked) && !char.IsControl((char)dataToPrint[i]))
+                    this.tbTerminal.Text += (char)dataToPrint[i];
+                else
+                    this.tbTerminal.Text += "<" + this.byteToHex(dataToPrint[i]) + ">";
+            }
+        }
+
+        private string byteToHex(byte value)
+        {
+            string hexValue = "";
+            int digit1 = value / 16;
+            hexValue += (digit1 > 9) ? ((char)(55 + digit1)).ToString() : digit1.ToString();
+            int digit2 = value % 16;
+            hexValue += (digit2 > 9) ? ((char)(55 + digit2)).ToString() : digit2.ToString();
+            return hexValue;
+        }
+
+        private void toggleDtr()
+        {
+            this.cbDtr.CheckedChanged -= this.cbDtr_CheckedChanged;
+            if (this.comPort.DtrEnable)
+            {
+                this.comPort.DtrEnable = false;
+                this.miDtr.Checked = false;
+                this.cbDtr.Checked = false;
+            }
+            else
+            {
+                this.comPort.DtrEnable = true;
+                this.miDtr.Checked = true;
+                this.cbDtr.Checked = true;
+            }
+            this.cbDtr.CheckedChanged += this.cbDtr_CheckedChanged;
+        }
+
+        private void toggleRts()
+        {
+            this.cbRts.CheckedChanged -= this.cbRts_CheckedChanged;
+            if (this.comPort.RtsEnable)
+            {
+                this.comPort.RtsEnable = false;
+                this.miRts.Checked = false;
+                this.cbRts.Checked = false;
+            }
+            else
+            {
+                this.comPort.RtsEnable = true;
+                this.miRts.Checked = true;
+                this.cbRts.Checked = true;
+            }
+            this.cbRts.CheckedChanged += this.cbRts_CheckedChanged;
+        }
+        
+
+        #endregion
+
+        #region Métodos Estáticos
+
+        public static bool ValidateMessage(string message)
+        {
+            try
+            {
+                for (int i = 0; i < message.Length; i++)
+                    if (message[i].Equals('\\'))
+                        if (message[i + 1].Equals('\\'))
+                            i += 1;
+                        else if (validateHexDigit(message[i + 1]) && validateHexDigit(message[i + 2]))
+                            i += 2;
+                        else
+                            return false;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static bool validateHexDigit(char digit)
+        {
+            if (((digit >= (byte)'A') && (digit <= (byte)'F') || char.IsDigit(digit)))
+                return true;
+            else return false;
+        }
+
+        #endregion
+    }
+}

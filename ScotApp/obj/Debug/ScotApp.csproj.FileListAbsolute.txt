@@ -1,0 +1,11 @@
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\bin\Debug\ScotApp.exe
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\bin\Debug\ScotApp.pdb
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Properties.Resources.resources
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.csproj.GenerateResource.Cache
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.exe
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.pdb
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.MainForm.resources
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\bin\Debug\ScotApp.exe.config
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Forms.SetPushKeysForm.resources
+C:\Users\jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Forms.InitComPortForm.resources
