@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InitComPortForm));
             this.lPortName = new System.Windows.Forms.Label();
             this.lBaudRate = new System.Windows.Forms.Label();
             this.cbPortName = new System.Windows.Forms.ComboBox();
@@ -281,10 +282,12 @@
             this.Controls.Add(this.lPortName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "InitComPortForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Open COM Port";
             this.Load += new System.EventHandler(this.InitComPortForm_Load);

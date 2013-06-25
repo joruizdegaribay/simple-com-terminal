@@ -9,3 +9,4 @@ C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\Scot
 C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\bin\Debug\ScotApp.exe.config
 C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Forms.SetPushKeysForm.resources
 C:\Users\jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Forms.InitComPortForm.resources
+C:\Users\Jonathan\Dropbox\Proyecto - SCOT\04.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Forms.AboutForm.resources

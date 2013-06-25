@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
-using System.ComponentModel;
+using System.Xml;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -82,7 +82,7 @@ namespace ScotApp
 
         private void miPrintTerminal_Click(object sender, EventArgs e)
         {
-
+            this.printTerminal();
         }
 
         private void miExit_Click(object sender, EventArgs e)
@@ -193,6 +193,78 @@ namespace ScotApp
 
         #region Eventos de los botones de "keys"
 
+        private void loadPushKeysToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == this.openKeysFileDialog.ShowDialog())
+            {
+                XmlDocument doc = new XmlDocument();
+                try
+                {
+                    doc.Load(this.openKeysFileDialog.FileName);
+                    XmlNodeList keysNodes = doc.GetElementsByTagName("PushKeys");
+                    if (keysNodes[0]["PushKey1"] != null)
+                        PushKeys.Default.KEY_1 = keysNodes[0]["PushKey1"].InnerText;
+                    else
+                        PushKeys.Default.KEY_1 = "";
+                    if (keysNodes[0]["PushKey2"] != null)
+                        PushKeys.Default.KEY_2 = keysNodes[0]["PushKey2"].InnerText;
+                    else
+                        PushKeys.Default.KEY_2 = "";
+                    if (keysNodes[0]["PushKey3"] != null)
+                        PushKeys.Default.KEY_3 = keysNodes[0]["PushKey3"].InnerText;
+                    else
+                        PushKeys.Default.KEY_3 = "";
+                    if (keysNodes[0]["PushKey4"] != null)
+                        PushKeys.Default.KEY_4 = keysNodes[0]["PushKey4"].InnerText;
+                    else
+                        PushKeys.Default.KEY_4 = "";
+                    if (keysNodes[0]["PushKey5"] != null)
+                        PushKeys.Default.KEY_5 = keysNodes[0]["PushKey5"].InnerText;
+                    else
+                        PushKeys.Default.KEY_5 = "";
+                    if (keysNodes[0]["PushKey6"] != null)
+                        PushKeys.Default.KEY_6 = keysNodes[0]["PushKey6"].InnerText;
+                    else
+                        PushKeys.Default.KEY_6 = "";
+                    if (keysNodes[0]["PushKey7"] != null)
+                        PushKeys.Default.KEY_7 = keysNodes[0]["PushKey7"].InnerText;
+                    else
+                        PushKeys.Default.KEY_7 = "";
+                    if (keysNodes[0]["PushKey8"] != null)
+                        PushKeys.Default.KEY_8 = keysNodes[0]["PushKey8"].InnerText;
+                    else
+                        PushKeys.Default.KEY_8 = "";
+                    PushKeys.Default.Save();
+                    this.updateKeysToolTip();
+                }
+                catch
+                {
+                    MessageBox.Show("All PushKeys cannot be loaded");
+                }
+            }
+        }
+
+        private void savePushKeysToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == this.saveKeysFileDialog.ShowDialog())
+            {
+                XmlWriter writer = XmlWriter.Create(this.saveKeysFileDialog.FileName);
+                writer.WriteStartDocument();
+                writer.WriteStartElement("PushKeys");
+                writer.WriteElementString("PushKey1", PushKeys.Default.KEY_1);
+                writer.WriteElementString("PushKey2", PushKeys.Default.KEY_2);
+                writer.WriteElementString("PushKey3", PushKeys.Default.KEY_3);
+                writer.WriteElementString("PushKey4", PushKeys.Default.KEY_4);
+                writer.WriteElementString("PushKey5", PushKeys.Default.KEY_5);
+                writer.WriteElementString("PushKey6", PushKeys.Default.KEY_6);
+                writer.WriteElementString("PushKey7", PushKeys.Default.KEY_7);
+                writer.WriteElementString("PushKey8", PushKeys.Default.KEY_8);
+                writer.WriteEndElement();
+                writer.WriteEndDocument();
+                writer.Close();
+            }
+        }
+
         private void bSendKey1_Click(object sender, EventArgs e)
         {
             this.sendMessage(PushKeys.Default.KEY_1);
@@ -236,6 +308,12 @@ namespace ScotApp
         private void bSetPushKeys_Click(object sender, EventArgs e)
         {
             this.setPushKeys();
+        }
+
+        private void miAbout_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
         }
 
         #endregion
@@ -297,7 +375,7 @@ namespace ScotApp
 
         private void bPrintTerminal_Click(object sender, EventArgs e)
         {
-
+            this.printTerminal();
         }
 
         private void bClearTerminal_Click(object sender, EventArgs e)
@@ -323,6 +401,35 @@ namespace ScotApp
 
         #endregion
 
+        #region Eventos de impresión
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Font printFont = new Font(FontFamily.GenericSansSerif, 9);
+            string[] lines = this.tbTerminal.Text.Split(new char[] { '\n' });
+            float yPos = e.MarginBounds.Top;
+            foreach (string line in lines)
+            {
+                SizeF size = e.Graphics.MeasureString(line, printFont);
+                if (size.Width < e.MarginBounds.Width)
+                {
+                    e.Graphics.DrawString(line, printFont, Brushes.Black, e.MarginBounds.Left, yPos);
+                    yPos += printFont.GetHeight(e.Graphics);
+                }
+                else
+                {
+                    int numLines = (int)(size.Width / e.MarginBounds.Width);
+                    if ((size.Width % e.MarginBounds.Width) != 0)
+                        numLines++;
+                    RectangleF stringArea = new RectangleF(new PointF(e.MarginBounds.Left, yPos), new SizeF(e.MarginBounds.Width, printFont.GetHeight(e.Graphics) * numLines));
+                    e.Graphics.DrawString(line, printFont, Brushes.Black, stringArea);
+                    yPos += printFont.GetHeight(e.Graphics) * numLines;
+                }
+            }
+        }
+        
+        #endregion
+
         #region Métodos privados
 
         private void closeComPort()
@@ -343,6 +450,15 @@ namespace ScotApp
             this.miSendKey8.Enabled = this.bSendKey8.Enabled = false;
             this.bSendMessage.Enabled = false;
             this.lState.Text = "Com Port Closed";
+        }
+
+        private void printTerminal()
+        {
+            if (DialogResult.OK == this.printDialog.ShowDialog())
+            {
+                this.printDocument.PrinterSettings = this.printDialog.PrinterSettings;
+                this.printDocument.Print();
+            }
         }
 
         private void updateKeysToolTip()
@@ -412,7 +528,9 @@ namespace ScotApp
             {
                 if (this.rbOff.Checked)
                 {
-                    if (!char.IsControl((char)dataToPrint[i]))
+                    if (dataToPrint[i] == 13)
+                        this.tbTerminal.Text += "\r\n";
+                    else
                         this.tbTerminal.Text += (char)dataToPrint[i];
                 }
                 else if ((this.rbNonAscii.Checked) && !char.IsControl((char)dataToPrint[i]))
@@ -501,5 +619,7 @@ namespace ScotApp
         }
 
         #endregion
+
+
     }
 }

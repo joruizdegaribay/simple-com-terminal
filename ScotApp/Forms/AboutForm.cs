@@ -14,5 +14,10 @@ namespace ScotApp.Forms
         {
             InitializeComponent();
         }
+
+        private void bOk_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

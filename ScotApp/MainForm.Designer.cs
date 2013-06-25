@@ -92,6 +92,10 @@
             this.cbRts = new System.Windows.Forms.CheckBox();
             this.cbDtr = new System.Windows.Forms.CheckBox();
             this.lState = new System.Windows.Forms.Label();
+            this.openKeysFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveKeysFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.printDialog = new System.Windows.Forms.PrintDialog();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.menuStrip1.SuspendLayout();
             this.gbKeys.SuspendLayout();
             this.gbSendMessage.SuspendLayout();
@@ -128,7 +132,7 @@
             this.toolStripSeparator5,
             this.miExit});
             this.miConnection.Name = "miConnection";
-            this.miConnection.Size = new System.Drawing.Size(81, 20);
+            this.miConnection.Size = new System.Drawing.Size(94, 20);
             this.miConnection.Text = "Connection";
             // 
             // miNewConnection
@@ -137,6 +141,7 @@
             this.miNewConnection.Name = "miNewConnection";
             this.miNewConnection.Size = new System.Drawing.Size(152, 22);
             this.miNewConnection.Text = "New";
+            this.miNewConnection.Visible = false;
             this.miNewConnection.Click += new System.EventHandler(this.miNewConnection_Click);
             // 
             // miOpenConnection
@@ -145,6 +150,7 @@
             this.miOpenConnection.Name = "miOpenConnection";
             this.miOpenConnection.Size = new System.Drawing.Size(152, 22);
             this.miOpenConnection.Text = "Open...";
+            this.miOpenConnection.Visible = false;
             this.miOpenConnection.Click += new System.EventHandler(this.miOpenConnection_Click);
             // 
             // miCloseConnection
@@ -153,6 +159,7 @@
             this.miCloseConnection.Name = "miCloseConnection";
             this.miCloseConnection.Size = new System.Drawing.Size(152, 22);
             this.miCloseConnection.Text = "Close";
+            this.miCloseConnection.Visible = false;
             this.miCloseConnection.Click += new System.EventHandler(this.miCloseConnection_Click);
             // 
             // miSaveConnection
@@ -161,6 +168,7 @@
             this.miSaveConnection.Name = "miSaveConnection";
             this.miSaveConnection.Size = new System.Drawing.Size(152, 22);
             this.miSaveConnection.Text = "Save";
+            this.miSaveConnection.Visible = false;
             this.miSaveConnection.Click += new System.EventHandler(this.miSaveConnection_Click);
             // 
             // miSaveAsConnection
@@ -169,16 +177,17 @@
             this.miSaveAsConnection.Name = "miSaveAsConnection";
             this.miSaveAsConnection.Size = new System.Drawing.Size(152, 22);
             this.miSaveAsConnection.Text = "Save as...";
+            this.miSaveAsConnection.Visible = false;
             this.miSaveAsConnection.Click += new System.EventHandler(this.miSaveAsConnection_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator7.Visible = false;
             // 
             // miPrintTerminal
             // 
-            this.miPrintTerminal.Enabled = false;
             this.miPrintTerminal.Name = "miPrintTerminal";
             this.miPrintTerminal.Size = new System.Drawing.Size(152, 22);
             this.miPrintTerminal.Text = "Print";
@@ -269,17 +278,17 @@
             // 
             // loadPushKeysToolStripMenuItem
             // 
-            this.loadPushKeysToolStripMenuItem.Enabled = false;
             this.loadPushKeysToolStripMenuItem.Name = "loadPushKeysToolStripMenuItem";
             this.loadPushKeysToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.loadPushKeysToolStripMenuItem.Text = "Load Push Keys";
+            this.loadPushKeysToolStripMenuItem.Click += new System.EventHandler(this.loadPushKeysToolStripMenuItem_Click);
             // 
             // savePushKeysToolStripMenuItem
             // 
-            this.savePushKeysToolStripMenuItem.Enabled = false;
             this.savePushKeysToolStripMenuItem.Name = "savePushKeysToolStripMenuItem";
             this.savePushKeysToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.savePushKeysToolStripMenuItem.Text = "Save Push Keys";
+            this.savePushKeysToolStripMenuItem.Click += new System.EventHandler(this.savePushKeysToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
@@ -380,10 +389,10 @@
             // 
             // miAbout
             // 
-            this.miAbout.Enabled = false;
             this.miAbout.Name = "miAbout";
             this.miAbout.Size = new System.Drawing.Size(152, 22);
             this.miAbout.Text = "About SCOT...";
+            this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
             // bSetPushKeys
             // 
@@ -556,7 +565,6 @@
             // bPrintTerminal
             // 
             this.bPrintTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.bPrintTerminal.Enabled = false;
             this.bPrintTerminal.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.bPrintTerminal.FlatAppearance.BorderSize = 0;
             this.bPrintTerminal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
@@ -767,6 +775,22 @@
             this.lState.TabIndex = 5;
             this.lState.Text = "Com Port Closed";
             // 
+            // openKeysFileDialog
+            // 
+            this.openKeysFileDialog.Filter = "PushKeys file(*.pkf)|*.pkf";
+            // 
+            // saveKeysFileDialog
+            // 
+            this.saveKeysFileDialog.Filter = "PushKeys file(*.pkf)|*.pkf";
+            // 
+            // printDialog
+            // 
+            this.printDialog.UseEXDialog = true;
+            // 
+            // printDocument
+            // 
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -779,6 +803,7 @@
             this.Controls.Add(this.gbKeys);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(730, 450);
             this.Name = "MainForm";
@@ -866,6 +891,10 @@
         private System.Windows.Forms.CheckBox cbRts;
         private System.Windows.Forms.CheckBox cbDtr;
         private System.Windows.Forms.Label lState;
+        private System.Windows.Forms.OpenFileDialog openKeysFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveKeysFileDialog;
+        private System.Windows.Forms.PrintDialog printDialog;
+        private System.Drawing.Printing.PrintDocument printDocument;
     }
 }
 
