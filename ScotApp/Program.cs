@@ -14,7 +14,14 @@ namespace ScotApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            try
+            {
+                Application.Run(new MainForm());
+            }
+            catch
+            {
+                MessageBox.Show("The appication has had an error and it must be closed.\r\nIf error ocurrs again, notify to developers.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

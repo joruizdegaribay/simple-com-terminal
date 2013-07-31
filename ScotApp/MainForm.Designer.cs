@@ -132,14 +132,14 @@
             this.toolStripSeparator5,
             this.miExit});
             this.miConnection.Name = "miConnection";
-            this.miConnection.Size = new System.Drawing.Size(94, 20);
+            this.miConnection.Size = new System.Drawing.Size(81, 20);
             this.miConnection.Text = "Connection";
             // 
             // miNewConnection
             // 
             this.miNewConnection.Enabled = false;
             this.miNewConnection.Name = "miNewConnection";
-            this.miNewConnection.Size = new System.Drawing.Size(152, 22);
+            this.miNewConnection.Size = new System.Drawing.Size(121, 22);
             this.miNewConnection.Text = "New";
             this.miNewConnection.Visible = false;
             this.miNewConnection.Click += new System.EventHandler(this.miNewConnection_Click);
@@ -148,7 +148,7 @@
             // 
             this.miOpenConnection.Enabled = false;
             this.miOpenConnection.Name = "miOpenConnection";
-            this.miOpenConnection.Size = new System.Drawing.Size(152, 22);
+            this.miOpenConnection.Size = new System.Drawing.Size(121, 22);
             this.miOpenConnection.Text = "Open...";
             this.miOpenConnection.Visible = false;
             this.miOpenConnection.Click += new System.EventHandler(this.miOpenConnection_Click);
@@ -157,7 +157,7 @@
             // 
             this.miCloseConnection.Enabled = false;
             this.miCloseConnection.Name = "miCloseConnection";
-            this.miCloseConnection.Size = new System.Drawing.Size(152, 22);
+            this.miCloseConnection.Size = new System.Drawing.Size(121, 22);
             this.miCloseConnection.Text = "Close";
             this.miCloseConnection.Visible = false;
             this.miCloseConnection.Click += new System.EventHandler(this.miCloseConnection_Click);
@@ -166,7 +166,7 @@
             // 
             this.miSaveConnection.Enabled = false;
             this.miSaveConnection.Name = "miSaveConnection";
-            this.miSaveConnection.Size = new System.Drawing.Size(152, 22);
+            this.miSaveConnection.Size = new System.Drawing.Size(121, 22);
             this.miSaveConnection.Text = "Save";
             this.miSaveConnection.Visible = false;
             this.miSaveConnection.Click += new System.EventHandler(this.miSaveConnection_Click);
@@ -175,7 +175,7 @@
             // 
             this.miSaveAsConnection.Enabled = false;
             this.miSaveAsConnection.Name = "miSaveAsConnection";
-            this.miSaveAsConnection.Size = new System.Drawing.Size(152, 22);
+            this.miSaveAsConnection.Size = new System.Drawing.Size(121, 22);
             this.miSaveAsConnection.Text = "Save as...";
             this.miSaveAsConnection.Visible = false;
             this.miSaveAsConnection.Click += new System.EventHandler(this.miSaveAsConnection_Click);
@@ -183,25 +183,25 @@
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(118, 6);
             this.toolStripSeparator7.Visible = false;
             // 
             // miPrintTerminal
             // 
             this.miPrintTerminal.Name = "miPrintTerminal";
-            this.miPrintTerminal.Size = new System.Drawing.Size(152, 22);
+            this.miPrintTerminal.Size = new System.Drawing.Size(121, 22);
             this.miPrintTerminal.Text = "Print";
             this.miPrintTerminal.Click += new System.EventHandler(this.miPrintTerminal_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(118, 6);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(152, 22);
+            this.miExit.Size = new System.Drawing.Size(121, 22);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -390,7 +390,7 @@
             // miAbout
             // 
             this.miAbout.Name = "miAbout";
-            this.miAbout.Size = new System.Drawing.Size(152, 22);
+            this.miAbout.Size = new System.Drawing.Size(149, 22);
             this.miAbout.Text = "About SCOT...";
             this.miAbout.Click += new System.EventHandler(this.miAbout_Click);
             // 
@@ -768,6 +768,7 @@
             // 
             // lState
             // 
+            this.lState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lState.AutoSize = true;
             this.lState.Location = new System.Drawing.Point(5, 443);
             this.lState.Name = "lState";

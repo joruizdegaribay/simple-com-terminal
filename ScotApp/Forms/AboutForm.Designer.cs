@@ -49,9 +49,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(50, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 15);
+            this.label1.Size = new System.Drawing.Size(156, 15);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Simple Com Terminal V1.0";
+            this.label1.Text = "Simple COm Terminal V1.0";
             // 
             // linkLabel1
             // 

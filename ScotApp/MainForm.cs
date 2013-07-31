@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
 using System.Xml;
-using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -95,38 +94,43 @@ namespace ScotApp
             if (this.comPort.IsOpen)
                 this.closeComPort();
             InitComPortForm initComPortForm = new InitComPortForm();
-            if (DialogResult.OK == initComPortForm.ShowDialog())
+            do
             {
-                this.comPort.PortName = ComPort.Default.PORT_NAME;
-                this.comPort.BaudRate = ComPort.Default.BAUD_RATE;
-                this.comPort.Parity = ComPort.Default.PARITY;
-                this.comPort.DataBits = ComPort.Default.DATA_BITS;
-                this.comPort.StopBits = ComPort.Default.STOP_BITS;
-                try
+                if (DialogResult.OK == initComPortForm.ShowDialog())
                 {
-                    this.comPort.Open();
+                    this.comPort.PortName = ComPort.Default.PORT_NAME;
+                    this.comPort.BaudRate = ComPort.Default.BAUD_RATE;
+                    this.comPort.Parity = ComPort.Default.PARITY;
+                    this.comPort.DataBits = ComPort.Default.DATA_BITS;
+                    this.comPort.StopBits = ComPort.Default.STOP_BITS;
+                    try
+                    {
+                        this.comPort.Open();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Failed to open port", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        continue;
+                    }
+                    this.miClosePort.Enabled = true;
+                    this.miDtr.Checked = this.cbDtr.Checked = this.comPort.DtrEnable;
+                    this.miDtr.Enabled = this.cbDtr.Enabled = true;
+                    this.miRts.Checked = this.cbRts.Checked = this.comPort.RtsEnable;
+                    this.miRts.Enabled = this.cbRts.Enabled = true;
+                    this.miSendKey1.Enabled = this.bSendKey1.Enabled = true;
+                    this.miSendKey2.Enabled = this.bSendKey2.Enabled = true;
+                    this.miSendKey3.Enabled = this.bSendKey3.Enabled = true;
+                    this.miSendKey4.Enabled = this.bSendKey4.Enabled = true;
+                    this.miSendKey5.Enabled = this.bSendKey5.Enabled = true;
+                    this.miSendKey6.Enabled = this.bSendKey6.Enabled = true;
+                    this.miSendKey7.Enabled = this.bSendKey7.Enabled = true;
+                    this.miSendKey8.Enabled = this.bSendKey8.Enabled = true;
+                    this.bSendMessage.Enabled = true;
+                    this.lState.Text = "Com Port Opened: " + this.comPort.PortName + " - " + this.comPort.BaudRate.ToString();
+                    break;
                 }
-                catch
-                {
-                    MessageBox.Show("Failed to open port", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                this.miClosePort.Enabled = true;
-                this.miDtr.Checked = this.cbDtr.Checked = this.comPort.DtrEnable;
-                this.miDtr.Enabled = this.cbDtr.Enabled = true;
-                this.miRts.Checked = this.cbRts.Checked = this.comPort.RtsEnable;
-                this.miRts.Enabled = this.cbRts.Enabled = true;
-                this.miSendKey1.Enabled = this.bSendKey1.Enabled = true;
-                this.miSendKey2.Enabled = this.bSendKey2.Enabled = true;
-                this.miSendKey3.Enabled = this.bSendKey3.Enabled = true;
-                this.miSendKey4.Enabled = this.bSendKey4.Enabled = true;
-                this.miSendKey5.Enabled = this.bSendKey5.Enabled = true;
-                this.miSendKey6.Enabled = this.bSendKey6.Enabled = true;
-                this.miSendKey7.Enabled = this.bSendKey7.Enabled = true;
-                this.miSendKey8.Enabled = this.bSendKey8.Enabled = true;
-                this.bSendMessage.Enabled = true;
-                this.lState.Text = "Com Port Opened: " + this.comPort.PortName + " - " + this.comPort.BaudRate.ToString();
             }
+            while (DialogResult.OK == initComPortForm.DialogResult);
         }
 
         private void miClosePort_Click(object sender, EventArgs e)
@@ -538,6 +542,10 @@ namespace ScotApp
                 else
                     this.tbTerminal.Text += "<" + this.byteToHex(dataToPrint[i]) + ">";
             }
+            //move the caret to the end of the text
+            this.tbTerminal.SelectionStart = this.tbTerminal.TextLength;
+            //scroll to the caret
+            this.tbTerminal.ScrollToCaret();
         }
 
         private string byteToHex(byte value)

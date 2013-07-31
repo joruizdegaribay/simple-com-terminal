@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -13,12 +12,12 @@ namespace ScotApp.Forms
         public InitComPortForm()
         {
             InitializeComponent();
+            foreach (string portName in SerialPort.GetPortNames())
+                this.cbPortName.Items.Add(portName);
         }
 
         private void InitComPortForm_Load(object sender, EventArgs e)
         {
-            foreach (string portName in SerialPort.GetPortNames())
-                this.cbPortName.Items.Add(portName);
             this.cbPortName.SelectedItem = ComPort.Default.PORT_NAME;
             this.cbBaudRate.SelectedItem = ComPort.Default.BAUD_RATE.ToString();
             switch (ComPort.Default.DATA_BITS)
