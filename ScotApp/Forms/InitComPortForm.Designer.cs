@@ -79,6 +79,7 @@
             this.cbPortName.Size = new System.Drawing.Size(90, 23);
             this.cbPortName.Sorted = true;
             this.cbPortName.TabIndex = 2;
+            this.cbPortName.SelectedIndexChanged += new System.EventHandler(this.cbPortName_SelectedIndexChanged);
             // 
             // cbBaudRate
             // 
@@ -254,6 +255,7 @@
             // bOpen
             // 
             this.bOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bOpen.Enabled = false;
             this.bOpen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.bOpen.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.bOpen.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;

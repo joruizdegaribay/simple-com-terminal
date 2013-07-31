@@ -438,7 +438,11 @@ namespace ScotApp
 
         private void closeComPort()
         {
-            this.comPort.Close();
+            try
+            {
+                this.comPort.Close();
+            }
+            catch { }
             this.miClosePort.Enabled = false;
             this.miDtr.Checked = this.cbDtr.Checked = false;
             this.miDtr.Enabled = this.cbDtr.Enabled = false;
@@ -522,6 +526,8 @@ namespace ScotApp
             }
             catch
             {
+                this.closeComPort();
+                MessageBox.Show("Message could not be sent through Serial Port.\r\nSerial Port has had an error and it must be closed.", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -561,17 +567,26 @@ namespace ScotApp
         private void toggleDtr()
         {
             this.cbDtr.CheckedChanged -= this.cbDtr_CheckedChanged;
-            if (this.comPort.DtrEnable)
+            try
             {
-                this.comPort.DtrEnable = false;
-                this.miDtr.Checked = false;
-                this.cbDtr.Checked = false;
+                if (this.comPort.DtrEnable)
+                {
+                    this.comPort.DtrEnable = false;
+                    this.miDtr.Checked = false;
+                    this.cbDtr.Checked = false;
+
+                }
+                else
+                {
+                    this.comPort.DtrEnable = true;
+                    this.miDtr.Checked = true;
+                    this.cbDtr.Checked = true;
+                }
             }
-            else
+            catch (Exception e)
             {
-                this.comPort.DtrEnable = true;
-                this.miDtr.Checked = true;
-                this.cbDtr.Checked = true;
+                this.closeComPort();
+                MessageBox.Show("Dtr pin could not be modified.\r\nSerial Port has had an error and it must be closed.", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.cbDtr.CheckedChanged += this.cbDtr_CheckedChanged;
         }
@@ -579,17 +594,25 @@ namespace ScotApp
         private void toggleRts()
         {
             this.cbRts.CheckedChanged -= this.cbRts_CheckedChanged;
-            if (this.comPort.RtsEnable)
+            try
             {
-                this.comPort.RtsEnable = false;
-                this.miRts.Checked = false;
-                this.cbRts.Checked = false;
+                if (this.comPort.RtsEnable)
+                {
+                    this.comPort.RtsEnable = false;
+                    this.miRts.Checked = false;
+                    this.cbRts.Checked = false;
+                }
+                else
+                {
+                    this.comPort.RtsEnable = true;
+                    this.miRts.Checked = true;
+                    this.cbRts.Checked = true;
+                }
             }
-            else
+            catch (Exception e)
             {
-                this.comPort.RtsEnable = true;
-                this.miRts.Checked = true;
-                this.cbRts.Checked = true;
+                this.closeComPort();
+                MessageBox.Show("Rts pin could not be modified.\r\nSerial Port has had an error and it must be closed.", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.cbRts.CheckedChanged += this.cbRts_CheckedChanged;
         }

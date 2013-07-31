@@ -97,5 +97,13 @@ namespace ScotApp.Forms
             if (e.KeyCode == Keys.Escape)
                 this.DialogResult = DialogResult.Cancel;
         }
+
+        private void cbPortName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cbPortName.SelectedIndex != -1)
+                this.bOpen.Enabled = true;
+            else
+                this.bOpen.Enabled = false;
+        }
     }
 }

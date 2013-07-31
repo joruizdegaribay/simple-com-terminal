@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ScotApp
@@ -20,7 +19,7 @@ namespace ScotApp
             }
             catch
             {
-                MessageBox.Show("The appication has had an error and it must be closed.\r\nIf error ocurrs again, notify to developers.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("The appication has had an error and it must be closed.\r\nIf error occurs again, notify to developers.", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
