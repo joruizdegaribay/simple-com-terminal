@@ -644,7 +644,7 @@ namespace ScotApp
 
         private static bool validateHexDigit(char digit)
         {
-            if (((digit >= (byte)'A') && (digit <= (byte)'F') || char.IsDigit(digit)))
+            if (((digit >= (byte)'A') && (digit <= (byte)'F')) || ((digit >= (byte)'a') && (digit <= (byte)'f')) || char.IsDigit(digit))
                 return true;
             else return false;
         }
