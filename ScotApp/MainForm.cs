@@ -14,13 +14,16 @@ namespace ScotApp
         #region Atributes
 
         private SerialPort comPort = new SerialPort();
+        private Timer receiveTimer = new Timer();
 
         #endregion
 
         public MainForm()
         {
             InitializeComponent();
-            this.comPort.DataReceived += comPort_DataReceived;
+            //this.comPort.DataReceived += comPort_DataReceived;
+            this.receiveTimer.Interval = 100;
+            this.receiveTimer.Tick += receiveTimer_Tick;
         }
 
         #region Eventos del formulario
@@ -127,6 +130,7 @@ namespace ScotApp
                     this.miSendKey8.Enabled = this.bSendKey8.Enabled = true;
                     this.bSendMessage.Enabled = true;
                     this.lState.Text = "Com Port Opened: " + this.comPort.PortName + " - " + this.comPort.BaudRate.ToString();
+                    this.receiveTimer.Enabled = true;
                     break;
                 }
             }
@@ -136,6 +140,7 @@ namespace ScotApp
         private void miClosePort_Click(object sender, EventArgs e)
         {
             this.closeComPort();
+            this.receiveTimer.Enabled = false;
         }
 
         private void miDtr_Click(object sender, EventArgs e)
@@ -389,18 +394,29 @@ namespace ScotApp
 
         #endregion
 
-        #region Eventos del comPort
+        //#region Eventos del comPort
 
-        void comPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        //void comPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        //{
+        //    if (this.tbTerminal.InvokeRequired)
+        //        this.Invoke(new SerialDataReceivedEventHandler(this.comPort_DataReceived), new object[] { sender, e });
+        //    else
+        //    {
+        //        byte[] data = new byte[this.comPort.BytesToRead];
+        //        this.comPort.Read(data, 0, this.comPort.BytesToRead);
+        //        this.printToTerminal(data, data.Length);
+        //    }
+        //}
+
+        //#endregion
+
+        #region Eventos del timer
+
+        void receiveTimer_Tick(object sender, EventArgs e)
         {
-            if (this.tbTerminal.InvokeRequired)
-                this.Invoke(new SerialDataReceivedEventHandler(this.comPort_DataReceived), new object[] { sender, e });
-            else
-            {
-                byte[] data = new byte[this.comPort.BytesToRead];
-                this.comPort.Read(data, 0, this.comPort.BytesToRead);
-                this.printToTerminal(data, data.Length);
-            }
+            byte[] data = new byte[this.comPort.BytesToRead];
+            this.comPort.Read(data, 0, this.comPort.BytesToRead);
+            this.printToTerminal(data, data.Length);
         }
 
         #endregion

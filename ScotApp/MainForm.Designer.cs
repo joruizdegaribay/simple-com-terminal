@@ -711,6 +711,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbTerminal.BackColor = System.Drawing.SystemColors.Window;
+            this.tbTerminal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.tbTerminal.Location = new System.Drawing.Point(25, 30);
             this.tbTerminal.Multiline = true;
             this.tbTerminal.Name = "tbTerminal";
