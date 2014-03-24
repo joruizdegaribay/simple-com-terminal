@@ -51,17 +51,17 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 15);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Simple COm Terminal V1.0";
+            this.label1.Text = "Simple COm Terminal V1.1";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(50, 45);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(202, 15);
+            this.linkLabel1.Size = new System.Drawing.Size(178, 15);
             this.linkLabel1.TabIndex = 11;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "jonathan.ruizdegaribay@gmail.com";
+            this.linkLabel1.Text = "jonathan.garibay@hotmail.com";
             // 
             // bOk
             // 

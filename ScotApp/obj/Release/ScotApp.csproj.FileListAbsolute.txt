@@ -9,3 +9,4 @@ C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotAp
 C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.csproj.GenerateResource.Cache
 C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.exe
 C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.pdb
+C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.csprojResolveAssemblyReference.cache
