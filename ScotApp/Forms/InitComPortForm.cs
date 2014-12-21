@@ -13,7 +13,12 @@ namespace ScotApp.Forms
         {
             InitializeComponent();
             foreach (string portName in SerialPort.GetPortNames())
-                this.cbPortName.Items.Add(portName);
+            {
+                string finalName = portName;
+                while (!char.IsNumber(finalName[finalName.Length-1]))
+                    finalName = finalName.Substring(0, portName.Length - 1);
+                this.cbPortName.Items.Add(finalName);
+            }
         }
 
         private void InitComPortForm_Load(object sender, EventArgs e)

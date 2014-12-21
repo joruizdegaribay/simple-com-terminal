@@ -51,7 +51,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 15);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Simple COm Terminal V1.1";
+            this.label1.Text = "Simple COm Terminal V1.2";
             // 
             // linkLabel1
             // 

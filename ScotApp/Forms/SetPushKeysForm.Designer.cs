@@ -45,7 +45,7 @@
             this.tbKey7 = new System.Windows.Forms.TextBox();
             this.lKey7 = new System.Windows.Forms.Label();
             this.tbKey8 = new System.Windows.Forms.TextBox();
-            this.lKey = new System.Windows.Forms.Label();
+            this.lKey8 = new System.Windows.Forms.Label();
             this.gbInformation = new System.Windows.Forms.GroupBox();
             this.lInformation = new System.Windows.Forms.Label();
             this.bOk = new System.Windows.Forms.Button();
@@ -59,6 +59,12 @@
             this.pbValidate6 = new System.Windows.Forms.PictureBox();
             this.pbValidate7 = new System.Windows.Forms.PictureBox();
             this.pbValidate8 = new System.Windows.Forms.PictureBox();
+            this.pbValidate9 = new System.Windows.Forms.PictureBox();
+            this.tbKey9 = new System.Windows.Forms.TextBox();
+            this.lKey9 = new System.Windows.Forms.Label();
+            this.pbValidate10 = new System.Windows.Forms.PictureBox();
+            this.tbKey10 = new System.Windows.Forms.TextBox();
+            this.lKey10 = new System.Windows.Forms.Label();
             this.gbInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate2)).BeginInit();
@@ -68,12 +74,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbValidate9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbValidate10)).BeginInit();
             this.SuspendLayout();
             // 
             // lKey1
             // 
             this.lKey1.AutoSize = true;
-            this.lKey1.Location = new System.Drawing.Point(60, 30);
+            this.lKey1.Location = new System.Drawing.Point(68, 30);
             this.lKey1.Name = "lKey1";
             this.lKey1.Size = new System.Drawing.Size(22, 15);
             this.lKey1.TabIndex = 0;
@@ -81,7 +89,7 @@
             // 
             // tbKey1
             // 
-            this.tbKey1.Location = new System.Drawing.Point(88, 27);
+            this.tbKey1.Location = new System.Drawing.Point(99, 27);
             this.tbKey1.Name = "tbKey1";
             this.tbKey1.Size = new System.Drawing.Size(300, 21);
             this.tbKey1.TabIndex = 1;
@@ -89,7 +97,7 @@
             // 
             // tbKey2
             // 
-            this.tbKey2.Location = new System.Drawing.Point(88, 54);
+            this.tbKey2.Location = new System.Drawing.Point(99, 54);
             this.tbKey2.Name = "tbKey2";
             this.tbKey2.Size = new System.Drawing.Size(300, 21);
             this.tbKey2.TabIndex = 3;
@@ -98,7 +106,7 @@
             // lKey2
             // 
             this.lKey2.AutoSize = true;
-            this.lKey2.Location = new System.Drawing.Point(60, 57);
+            this.lKey2.Location = new System.Drawing.Point(68, 57);
             this.lKey2.Name = "lKey2";
             this.lKey2.Size = new System.Drawing.Size(22, 15);
             this.lKey2.TabIndex = 2;
@@ -106,7 +114,7 @@
             // 
             // tbKey3
             // 
-            this.tbKey3.Location = new System.Drawing.Point(88, 81);
+            this.tbKey3.Location = new System.Drawing.Point(99, 81);
             this.tbKey3.Name = "tbKey3";
             this.tbKey3.Size = new System.Drawing.Size(300, 21);
             this.tbKey3.TabIndex = 5;
@@ -115,7 +123,7 @@
             // lKey3
             // 
             this.lKey3.AutoSize = true;
-            this.lKey3.Location = new System.Drawing.Point(60, 84);
+            this.lKey3.Location = new System.Drawing.Point(68, 84);
             this.lKey3.Name = "lKey3";
             this.lKey3.Size = new System.Drawing.Size(22, 15);
             this.lKey3.TabIndex = 4;
@@ -123,7 +131,7 @@
             // 
             // tbKey4
             // 
-            this.tbKey4.Location = new System.Drawing.Point(88, 108);
+            this.tbKey4.Location = new System.Drawing.Point(99, 108);
             this.tbKey4.Name = "tbKey4";
             this.tbKey4.Size = new System.Drawing.Size(300, 21);
             this.tbKey4.TabIndex = 7;
@@ -132,7 +140,7 @@
             // lKey4
             // 
             this.lKey4.AutoSize = true;
-            this.lKey4.Location = new System.Drawing.Point(60, 111);
+            this.lKey4.Location = new System.Drawing.Point(68, 111);
             this.lKey4.Name = "lKey4";
             this.lKey4.Size = new System.Drawing.Size(22, 15);
             this.lKey4.TabIndex = 6;
@@ -140,7 +148,7 @@
             // 
             // tbKey5
             // 
-            this.tbKey5.Location = new System.Drawing.Point(88, 135);
+            this.tbKey5.Location = new System.Drawing.Point(99, 135);
             this.tbKey5.Name = "tbKey5";
             this.tbKey5.Size = new System.Drawing.Size(300, 21);
             this.tbKey5.TabIndex = 9;
@@ -149,7 +157,7 @@
             // lKey5
             // 
             this.lKey5.AutoSize = true;
-            this.lKey5.Location = new System.Drawing.Point(60, 138);
+            this.lKey5.Location = new System.Drawing.Point(68, 138);
             this.lKey5.Name = "lKey5";
             this.lKey5.Size = new System.Drawing.Size(22, 15);
             this.lKey5.TabIndex = 8;
@@ -157,7 +165,7 @@
             // 
             // tbKey6
             // 
-            this.tbKey6.Location = new System.Drawing.Point(88, 162);
+            this.tbKey6.Location = new System.Drawing.Point(99, 162);
             this.tbKey6.Name = "tbKey6";
             this.tbKey6.Size = new System.Drawing.Size(300, 21);
             this.tbKey6.TabIndex = 11;
@@ -166,7 +174,7 @@
             // lKey6
             // 
             this.lKey6.AutoSize = true;
-            this.lKey6.Location = new System.Drawing.Point(60, 165);
+            this.lKey6.Location = new System.Drawing.Point(68, 165);
             this.lKey6.Name = "lKey6";
             this.lKey6.Size = new System.Drawing.Size(22, 15);
             this.lKey6.TabIndex = 10;
@@ -174,7 +182,7 @@
             // 
             // tbKey7
             // 
-            this.tbKey7.Location = new System.Drawing.Point(88, 189);
+            this.tbKey7.Location = new System.Drawing.Point(99, 189);
             this.tbKey7.Name = "tbKey7";
             this.tbKey7.Size = new System.Drawing.Size(300, 21);
             this.tbKey7.TabIndex = 13;
@@ -183,7 +191,7 @@
             // lKey7
             // 
             this.lKey7.AutoSize = true;
-            this.lKey7.Location = new System.Drawing.Point(60, 192);
+            this.lKey7.Location = new System.Drawing.Point(68, 192);
             this.lKey7.Name = "lKey7";
             this.lKey7.Size = new System.Drawing.Size(22, 15);
             this.lKey7.TabIndex = 12;
@@ -191,25 +199,27 @@
             // 
             // tbKey8
             // 
-            this.tbKey8.Location = new System.Drawing.Point(88, 216);
+            this.tbKey8.Location = new System.Drawing.Point(99, 216);
             this.tbKey8.Name = "tbKey8";
             this.tbKey8.Size = new System.Drawing.Size(300, 21);
             this.tbKey8.TabIndex = 15;
             this.tbKey8.TextChanged += new System.EventHandler(this.tbKey8_TextChanged);
             // 
-            // lKey
+            // lKey8
             // 
-            this.lKey.AutoSize = true;
-            this.lKey.Location = new System.Drawing.Point(60, 219);
-            this.lKey.Name = "lKey";
-            this.lKey.Size = new System.Drawing.Size(22, 15);
-            this.lKey.TabIndex = 14;
-            this.lKey.Text = "K8";
+            this.lKey8.AutoSize = true;
+            this.lKey8.Location = new System.Drawing.Point(68, 219);
+            this.lKey8.Name = "lKey8";
+            this.lKey8.Size = new System.Drawing.Size(22, 15);
+            this.lKey8.TabIndex = 14;
+            this.lKey8.Text = "K8";
             // 
             // gbInformation
             // 
+            this.gbInformation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gbInformation.Controls.Add(this.lInformation);
-            this.gbInformation.Location = new System.Drawing.Point(22, 255);
+            this.gbInformation.Location = new System.Drawing.Point(22, 321);
             this.gbInformation.Name = "gbInformation";
             this.gbInformation.Size = new System.Drawing.Size(440, 100);
             this.gbInformation.TabIndex = 16;
@@ -234,7 +244,7 @@
             this.bOk.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.bOk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.bOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bOk.Location = new System.Drawing.Point(306, 374);
+            this.bOk.Location = new System.Drawing.Point(306, 440);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(80, 26);
             this.bOk.TabIndex = 17;
@@ -249,7 +259,7 @@
             this.bCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.bCancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.bCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bCancel.Location = new System.Drawing.Point(392, 374);
+            this.bCancel.Location = new System.Drawing.Point(392, 440);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(80, 26);
             this.bCancel.TabIndex = 18;
@@ -266,7 +276,7 @@
             // 
             // pbValidate1
             // 
-            this.pbValidate1.Location = new System.Drawing.Point(394, 32);
+            this.pbValidate1.Location = new System.Drawing.Point(405, 32);
             this.pbValidate1.Name = "pbValidate1";
             this.pbValidate1.Size = new System.Drawing.Size(12, 12);
             this.pbValidate1.TabIndex = 19;
@@ -274,7 +284,7 @@
             // 
             // pbValidate2
             // 
-            this.pbValidate2.Location = new System.Drawing.Point(394, 59);
+            this.pbValidate2.Location = new System.Drawing.Point(405, 59);
             this.pbValidate2.Name = "pbValidate2";
             this.pbValidate2.Size = new System.Drawing.Size(12, 12);
             this.pbValidate2.TabIndex = 20;
@@ -282,7 +292,7 @@
             // 
             // pbValidate3
             // 
-            this.pbValidate3.Location = new System.Drawing.Point(394, 86);
+            this.pbValidate3.Location = new System.Drawing.Point(405, 86);
             this.pbValidate3.Name = "pbValidate3";
             this.pbValidate3.Size = new System.Drawing.Size(12, 12);
             this.pbValidate3.TabIndex = 21;
@@ -290,7 +300,7 @@
             // 
             // pbValidate4
             // 
-            this.pbValidate4.Location = new System.Drawing.Point(394, 113);
+            this.pbValidate4.Location = new System.Drawing.Point(405, 113);
             this.pbValidate4.Name = "pbValidate4";
             this.pbValidate4.Size = new System.Drawing.Size(12, 12);
             this.pbValidate4.TabIndex = 22;
@@ -298,7 +308,7 @@
             // 
             // pbValidate5
             // 
-            this.pbValidate5.Location = new System.Drawing.Point(394, 140);
+            this.pbValidate5.Location = new System.Drawing.Point(405, 140);
             this.pbValidate5.Name = "pbValidate5";
             this.pbValidate5.Size = new System.Drawing.Size(12, 12);
             this.pbValidate5.TabIndex = 23;
@@ -306,7 +316,7 @@
             // 
             // pbValidate6
             // 
-            this.pbValidate6.Location = new System.Drawing.Point(394, 167);
+            this.pbValidate6.Location = new System.Drawing.Point(405, 167);
             this.pbValidate6.Name = "pbValidate6";
             this.pbValidate6.Size = new System.Drawing.Size(12, 12);
             this.pbValidate6.TabIndex = 24;
@@ -314,7 +324,7 @@
             // 
             // pbValidate7
             // 
-            this.pbValidate7.Location = new System.Drawing.Point(394, 194);
+            this.pbValidate7.Location = new System.Drawing.Point(405, 194);
             this.pbValidate7.Name = "pbValidate7";
             this.pbValidate7.Size = new System.Drawing.Size(12, 12);
             this.pbValidate7.TabIndex = 25;
@@ -322,17 +332,73 @@
             // 
             // pbValidate8
             // 
-            this.pbValidate8.Location = new System.Drawing.Point(394, 221);
+            this.pbValidate8.Location = new System.Drawing.Point(405, 221);
             this.pbValidate8.Name = "pbValidate8";
             this.pbValidate8.Size = new System.Drawing.Size(12, 12);
             this.pbValidate8.TabIndex = 26;
             this.pbValidate8.TabStop = false;
             // 
+            // pbValidate9
+            // 
+            this.pbValidate9.Location = new System.Drawing.Point(405, 248);
+            this.pbValidate9.Name = "pbValidate9";
+            this.pbValidate9.Size = new System.Drawing.Size(12, 12);
+            this.pbValidate9.TabIndex = 29;
+            this.pbValidate9.TabStop = false;
+            // 
+            // tbKey9
+            // 
+            this.tbKey9.Location = new System.Drawing.Point(99, 243);
+            this.tbKey9.Name = "tbKey9";
+            this.tbKey9.Size = new System.Drawing.Size(300, 21);
+            this.tbKey9.TabIndex = 28;
+            this.tbKey9.TextChanged += new System.EventHandler(this.tbKey9_TextChanged);
+            // 
+            // lKey9
+            // 
+            this.lKey9.AutoSize = true;
+            this.lKey9.Location = new System.Drawing.Point(68, 246);
+            this.lKey9.Name = "lKey9";
+            this.lKey9.Size = new System.Drawing.Size(22, 15);
+            this.lKey9.TabIndex = 27;
+            this.lKey9.Text = "K9";
+            // 
+            // pbValidate10
+            // 
+            this.pbValidate10.Location = new System.Drawing.Point(405, 275);
+            this.pbValidate10.Name = "pbValidate10";
+            this.pbValidate10.Size = new System.Drawing.Size(12, 12);
+            this.pbValidate10.TabIndex = 32;
+            this.pbValidate10.TabStop = false;
+            // 
+            // tbKey10
+            // 
+            this.tbKey10.Location = new System.Drawing.Point(99, 270);
+            this.tbKey10.Name = "tbKey10";
+            this.tbKey10.Size = new System.Drawing.Size(300, 21);
+            this.tbKey10.TabIndex = 31;
+            this.tbKey10.TextChanged += new System.EventHandler(this.tbKey10_TextChanged);
+            // 
+            // lKey10
+            // 
+            this.lKey10.AutoSize = true;
+            this.lKey10.Location = new System.Drawing.Point(68, 273);
+            this.lKey10.Name = "lKey10";
+            this.lKey10.Size = new System.Drawing.Size(29, 15);
+            this.lKey10.TabIndex = 30;
+            this.lKey10.Text = "K10";
+            // 
             // SetPushKeysForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(484, 412);
+            this.ClientSize = new System.Drawing.Size(484, 478);
+            this.Controls.Add(this.pbValidate10);
+            this.Controls.Add(this.tbKey10);
+            this.Controls.Add(this.lKey10);
+            this.Controls.Add(this.pbValidate9);
+            this.Controls.Add(this.tbKey9);
+            this.Controls.Add(this.lKey9);
             this.Controls.Add(this.pbValidate8);
             this.Controls.Add(this.pbValidate7);
             this.Controls.Add(this.pbValidate6);
@@ -345,7 +411,7 @@
             this.Controls.Add(this.bOk);
             this.Controls.Add(this.gbInformation);
             this.Controls.Add(this.tbKey8);
-            this.Controls.Add(this.lKey);
+            this.Controls.Add(this.lKey8);
             this.Controls.Add(this.tbKey7);
             this.Controls.Add(this.lKey7);
             this.Controls.Add(this.tbKey6);
@@ -382,6 +448,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbValidate8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbValidate9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbValidate10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,7 +472,7 @@
         private System.Windows.Forms.TextBox tbKey7;
         private System.Windows.Forms.Label lKey7;
         private System.Windows.Forms.TextBox tbKey8;
-        private System.Windows.Forms.Label lKey;
+        private System.Windows.Forms.Label lKey8;
         private System.Windows.Forms.GroupBox gbInformation;
         private System.Windows.Forms.Label lInformation;
         private System.Windows.Forms.Button bOk;
@@ -418,5 +486,11 @@
         private System.Windows.Forms.PictureBox pbValidate6;
         private System.Windows.Forms.PictureBox pbValidate7;
         private System.Windows.Forms.PictureBox pbValidate8;
+        private System.Windows.Forms.PictureBox pbValidate9;
+        private System.Windows.Forms.TextBox tbKey9;
+        private System.Windows.Forms.Label lKey9;
+        private System.Windows.Forms.PictureBox pbValidate10;
+        private System.Windows.Forms.TextBox tbKey10;
+        private System.Windows.Forms.Label lKey10;
     }
 }

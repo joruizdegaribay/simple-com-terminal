@@ -30,14 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.miConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.miNewConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.miOpenConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.miCloseConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.miSaveConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.miSaveAsConnection = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.miPrintTerminal = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,7 +90,12 @@
             this.saveKeysFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.printDialog = new System.Windows.Forms.PrintDialog();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
-            this.menuStrip1.SuspendLayout();
+            this.tReception = new System.Windows.Forms.Timer(this.components);
+            this.bSendKey9 = new System.Windows.Forms.Button();
+            this.bSendKey10 = new System.Windows.Forms.Button();
+            this.miSendKey9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSendKey10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainMenu.SuspendLayout();
             this.gbKeys.SuspendLayout();
             this.gbSendMessage.SuspendLayout();
             this.gbTerminal.SuspendLayout();
@@ -104,30 +103,24 @@
             this.gBSignals.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mainMenu
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miConnection,
             this.miComPort,
             this.miPushKeys,
             this.miHelp});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.mainMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.mainMenu.Size = new System.Drawing.Size(784, 24);
+            this.mainMenu.TabIndex = 0;
+            this.mainMenu.Text = "menuStrip1";
             // 
             // miConnection
             // 
             this.miConnection.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miNewConnection,
-            this.miOpenConnection,
-            this.miCloseConnection,
-            this.miSaveConnection,
-            this.miSaveAsConnection,
-            this.toolStripSeparator7,
             this.miPrintTerminal,
             this.toolStripSeparator5,
             this.miExit});
@@ -135,73 +128,22 @@
             this.miConnection.Size = new System.Drawing.Size(81, 20);
             this.miConnection.Text = "Connection";
             // 
-            // miNewConnection
-            // 
-            this.miNewConnection.Enabled = false;
-            this.miNewConnection.Name = "miNewConnection";
-            this.miNewConnection.Size = new System.Drawing.Size(121, 22);
-            this.miNewConnection.Text = "New";
-            this.miNewConnection.Visible = false;
-            this.miNewConnection.Click += new System.EventHandler(this.miNewConnection_Click);
-            // 
-            // miOpenConnection
-            // 
-            this.miOpenConnection.Enabled = false;
-            this.miOpenConnection.Name = "miOpenConnection";
-            this.miOpenConnection.Size = new System.Drawing.Size(121, 22);
-            this.miOpenConnection.Text = "Open...";
-            this.miOpenConnection.Visible = false;
-            this.miOpenConnection.Click += new System.EventHandler(this.miOpenConnection_Click);
-            // 
-            // miCloseConnection
-            // 
-            this.miCloseConnection.Enabled = false;
-            this.miCloseConnection.Name = "miCloseConnection";
-            this.miCloseConnection.Size = new System.Drawing.Size(121, 22);
-            this.miCloseConnection.Text = "Close";
-            this.miCloseConnection.Visible = false;
-            this.miCloseConnection.Click += new System.EventHandler(this.miCloseConnection_Click);
-            // 
-            // miSaveConnection
-            // 
-            this.miSaveConnection.Enabled = false;
-            this.miSaveConnection.Name = "miSaveConnection";
-            this.miSaveConnection.Size = new System.Drawing.Size(121, 22);
-            this.miSaveConnection.Text = "Save";
-            this.miSaveConnection.Visible = false;
-            this.miSaveConnection.Click += new System.EventHandler(this.miSaveConnection_Click);
-            // 
-            // miSaveAsConnection
-            // 
-            this.miSaveAsConnection.Enabled = false;
-            this.miSaveAsConnection.Name = "miSaveAsConnection";
-            this.miSaveAsConnection.Size = new System.Drawing.Size(121, 22);
-            this.miSaveAsConnection.Text = "Save as...";
-            this.miSaveAsConnection.Visible = false;
-            this.miSaveAsConnection.Click += new System.EventHandler(this.miSaveAsConnection_Click);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(118, 6);
-            this.toolStripSeparator7.Visible = false;
-            // 
             // miPrintTerminal
             // 
             this.miPrintTerminal.Name = "miPrintTerminal";
-            this.miPrintTerminal.Size = new System.Drawing.Size(121, 22);
+            this.miPrintTerminal.Size = new System.Drawing.Size(152, 22);
             this.miPrintTerminal.Text = "Print";
             this.miPrintTerminal.Click += new System.EventHandler(this.miPrintTerminal_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(118, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(149, 6);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(121, 22);
+            this.miExit.Size = new System.Drawing.Size(152, 22);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -221,7 +163,7 @@
             // 
             this.miOpenPort.Name = "miOpenPort";
             this.miOpenPort.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.miOpenPort.Size = new System.Drawing.Size(122, 22);
+            this.miOpenPort.Size = new System.Drawing.Size(152, 22);
             this.miOpenPort.Text = "Open";
             this.miOpenPort.Click += new System.EventHandler(this.miOpenPort_Click);
             // 
@@ -229,21 +171,21 @@
             // 
             this.miClosePort.Enabled = false;
             this.miClosePort.Name = "miClosePort";
-            this.miClosePort.Size = new System.Drawing.Size(122, 22);
+            this.miClosePort.Size = new System.Drawing.Size(152, 22);
             this.miClosePort.Text = "Close";
             this.miClosePort.Click += new System.EventHandler(this.miClosePort_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // miDtr
             // 
             this.miDtr.Enabled = false;
             this.miDtr.Name = "miDtr";
             this.miDtr.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.miDtr.Size = new System.Drawing.Size(122, 22);
+            this.miDtr.Size = new System.Drawing.Size(152, 22);
             this.miDtr.Text = "DTR";
             this.miDtr.Click += new System.EventHandler(this.miDtr_Click);
             // 
@@ -252,7 +194,7 @@
             this.miRts.Enabled = false;
             this.miRts.Name = "miRts";
             this.miRts.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.miRts.Size = new System.Drawing.Size(122, 22);
+            this.miRts.Size = new System.Drawing.Size(152, 22);
             this.miRts.Text = "RTS";
             this.miRts.Click += new System.EventHandler(this.miRts_Click);
             // 
@@ -270,6 +212,8 @@
             this.miSendKey6,
             this.miSendKey7,
             this.miSendKey8,
+            this.miSendKey9,
+            this.miSendKey10,
             this.toolStripSeparator1,
             this.miSetPushKeys});
             this.miPushKeys.Name = "miPushKeys";
@@ -279,28 +223,28 @@
             // loadPushKeysToolStripMenuItem
             // 
             this.loadPushKeysToolStripMenuItem.Name = "loadPushKeysToolStripMenuItem";
-            this.loadPushKeysToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.loadPushKeysToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.loadPushKeysToolStripMenuItem.Text = "Load Push Keys";
             this.loadPushKeysToolStripMenuItem.Click += new System.EventHandler(this.loadPushKeysToolStripMenuItem_Click);
             // 
             // savePushKeysToolStripMenuItem
             // 
             this.savePushKeysToolStripMenuItem.Name = "savePushKeysToolStripMenuItem";
-            this.savePushKeysToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.savePushKeysToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.savePushKeysToolStripMenuItem.Text = "Save Push Keys";
             this.savePushKeysToolStripMenuItem.Click += new System.EventHandler(this.savePushKeysToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(170, 6);
             // 
             // miSendKey1
             // 
             this.miSendKey1.Enabled = false;
             this.miSendKey1.Name = "miSendKey1";
             this.miSendKey1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
-            this.miSendKey1.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey1.Size = new System.Drawing.Size(173, 22);
             this.miSendKey1.Text = "Send Key 1";
             this.miSendKey1.Click += new System.EventHandler(this.miSendKey1_Click);
             // 
@@ -309,7 +253,7 @@
             this.miSendKey2.Enabled = false;
             this.miSendKey2.Name = "miSendKey2";
             this.miSendKey2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
-            this.miSendKey2.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey2.Size = new System.Drawing.Size(173, 22);
             this.miSendKey2.Text = "Send Key 2";
             this.miSendKey2.Click += new System.EventHandler(this.miSendKey2_Click);
             // 
@@ -318,7 +262,7 @@
             this.miSendKey3.Enabled = false;
             this.miSendKey3.Name = "miSendKey3";
             this.miSendKey3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
-            this.miSendKey3.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey3.Size = new System.Drawing.Size(173, 22);
             this.miSendKey3.Text = "Send Key 3";
             this.miSendKey3.Click += new System.EventHandler(this.miSendKey3_Click);
             // 
@@ -327,7 +271,7 @@
             this.miSendKey4.Enabled = false;
             this.miSendKey4.Name = "miSendKey4";
             this.miSendKey4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D4)));
-            this.miSendKey4.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey4.Size = new System.Drawing.Size(173, 22);
             this.miSendKey4.Text = "Send Key 4";
             this.miSendKey4.Click += new System.EventHandler(this.miSendKey4_Click);
             // 
@@ -336,7 +280,7 @@
             this.miSendKey5.Enabled = false;
             this.miSendKey5.Name = "miSendKey5";
             this.miSendKey5.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D5)));
-            this.miSendKey5.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey5.Size = new System.Drawing.Size(173, 22);
             this.miSendKey5.Text = "Send Key 5";
             this.miSendKey5.Click += new System.EventHandler(this.miSendKey5_Click);
             // 
@@ -345,7 +289,7 @@
             this.miSendKey6.Enabled = false;
             this.miSendKey6.Name = "miSendKey6";
             this.miSendKey6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D6)));
-            this.miSendKey6.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey6.Size = new System.Drawing.Size(173, 22);
             this.miSendKey6.Text = "Send Key 6";
             this.miSendKey6.Click += new System.EventHandler(this.miSendKey6_Click);
             // 
@@ -354,7 +298,7 @@
             this.miSendKey7.Enabled = false;
             this.miSendKey7.Name = "miSendKey7";
             this.miSendKey7.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D7)));
-            this.miSendKey7.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey7.Size = new System.Drawing.Size(173, 22);
             this.miSendKey7.Text = "Send Key 7";
             this.miSendKey7.Click += new System.EventHandler(this.miSendKey7_Click);
             // 
@@ -363,19 +307,19 @@
             this.miSendKey8.Enabled = false;
             this.miSendKey8.Name = "miSendKey8";
             this.miSendKey8.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D8)));
-            this.miSendKey8.Size = new System.Drawing.Size(167, 22);
+            this.miSendKey8.Size = new System.Drawing.Size(173, 22);
             this.miSendKey8.Text = "Send Key 8";
             this.miSendKey8.Click += new System.EventHandler(this.miSendKey8_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(164, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(170, 6);
             // 
             // miSetPushKeys
             // 
             this.miSetPushKeys.Name = "miSetPushKeys";
-            this.miSetPushKeys.Size = new System.Drawing.Size(167, 22);
+            this.miSetPushKeys.Size = new System.Drawing.Size(173, 22);
             this.miSetPushKeys.Text = "Set Push Keys";
             this.miSetPushKeys.Click += new System.EventHandler(this.miSetPushKeys_Click);
             // 
@@ -400,7 +344,7 @@
             this.bSetPushKeys.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.bSetPushKeys.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.bSetPushKeys.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bSetPushKeys.Location = new System.Drawing.Point(20, 298);
+            this.bSetPushKeys.Location = new System.Drawing.Point(20, 364);
             this.bSetPushKeys.Name = "bSetPushKeys";
             this.bSetPushKeys.Size = new System.Drawing.Size(40, 26);
             this.bSetPushKeys.TabIndex = 8;
@@ -554,7 +498,7 @@
             this.bClearTerminal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.bClearTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bClearTerminal.Image = ((System.Drawing.Image)(resources.GetObject("bClearTerminal.Image")));
-            this.bClearTerminal.Location = new System.Drawing.Point(593, 236);
+            this.bClearTerminal.Location = new System.Drawing.Point(593, 323);
             this.bClearTerminal.Name = "bClearTerminal";
             this.bClearTerminal.Size = new System.Drawing.Size(32, 30);
             this.bClearTerminal.TabIndex = 4;
@@ -571,7 +515,7 @@
             this.bPrintTerminal.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.bPrintTerminal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bPrintTerminal.Image = ((System.Drawing.Image)(resources.GetObject("bPrintTerminal.Image")));
-            this.bPrintTerminal.Location = new System.Drawing.Point(555, 236);
+            this.bPrintTerminal.Location = new System.Drawing.Point(555, 323);
             this.bPrintTerminal.Name = "bPrintTerminal";
             this.bPrintTerminal.Size = new System.Drawing.Size(32, 30);
             this.bPrintTerminal.TabIndex = 3;
@@ -601,6 +545,8 @@
             // 
             this.gbKeys.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.gbKeys.Controls.Add(this.bSendKey10);
+            this.gbKeys.Controls.Add(this.bSendKey9);
             this.gbKeys.Controls.Add(this.bSendKey1);
             this.gbKeys.Controls.Add(this.bSendKey6);
             this.gbKeys.Controls.Add(this.bSetPushKeys);
@@ -612,7 +558,7 @@
             this.gbKeys.Controls.Add(this.bSendKey2);
             this.gbKeys.Location = new System.Drawing.Point(20, 33);
             this.gbKeys.Name = "gbKeys";
-            this.gbKeys.Size = new System.Drawing.Size(80, 390);
+            this.gbKeys.Size = new System.Drawing.Size(80, 477);
             this.gbKeys.TabIndex = 1;
             this.gbKeys.TabStop = false;
             this.gbKeys.Text = "Keys";
@@ -643,7 +589,7 @@
             this.gbTerminal.Controls.Add(this.cbLocalEcho);
             this.gbTerminal.Location = new System.Drawing.Point(115, 130);
             this.gbTerminal.Name = "gbTerminal";
-            this.gbTerminal.Size = new System.Drawing.Size(650, 293);
+            this.gbTerminal.Size = new System.Drawing.Size(650, 380);
             this.gbTerminal.TabIndex = 4;
             this.gbTerminal.TabStop = false;
             this.gbTerminal.Text = "Terminal";
@@ -655,7 +601,7 @@
             this.pHexLog.Controls.Add(this.rbNonAscii);
             this.pHexLog.Controls.Add(this.rbOff);
             this.pHexLog.Controls.Add(this.label2);
-            this.pHexLog.Location = new System.Drawing.Point(150, 236);
+            this.pHexLog.Location = new System.Drawing.Point(150, 323);
             this.pHexLog.Name = "pHexLog";
             this.pHexLog.Size = new System.Drawing.Size(200, 50);
             this.pHexLog.TabIndex = 2;
@@ -717,14 +663,14 @@
             this.tbTerminal.Name = "tbTerminal";
             this.tbTerminal.ReadOnly = true;
             this.tbTerminal.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbTerminal.Size = new System.Drawing.Size(600, 200);
+            this.tbTerminal.Size = new System.Drawing.Size(600, 287);
             this.tbTerminal.TabIndex = 0;
             // 
             // cbLocalEcho
             // 
             this.cbLocalEcho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbLocalEcho.AutoSize = true;
-            this.cbLocalEcho.Location = new System.Drawing.Point(45, 237);
+            this.cbLocalEcho.Location = new System.Drawing.Point(45, 324);
             this.cbLocalEcho.Name = "cbLocalEcho";
             this.cbLocalEcho.Size = new System.Drawing.Size(87, 19);
             this.cbLocalEcho.TabIndex = 1;
@@ -771,7 +717,7 @@
             // 
             this.lState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lState.AutoSize = true;
-            this.lState.Location = new System.Drawing.Point(5, 443);
+            this.lState.Location = new System.Drawing.Point(5, 530);
             this.lState.Name = "lState";
             this.lState.Size = new System.Drawing.Size(99, 15);
             this.lState.TabIndex = 5;
@@ -793,28 +739,79 @@
             // 
             this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
             // 
+            // tReception
+            // 
+            this.tReception.Interval = 10;
+            this.tReception.Tick += new System.EventHandler(this.tReception_Tick);
+            // 
+            // bSendKey9
+            // 
+            this.bSendKey9.Enabled = false;
+            this.bSendKey9.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.bSendKey9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.bSendKey9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.bSendKey9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSendKey9.Location = new System.Drawing.Point(20, 298);
+            this.bSendKey9.Name = "bSendKey9";
+            this.bSendKey9.Size = new System.Drawing.Size(40, 26);
+            this.bSendKey9.TabIndex = 9;
+            this.bSendKey9.Text = "K9";
+            this.bSendKey9.UseVisualStyleBackColor = true;
+            this.bSendKey9.Click += new System.EventHandler(this.bSendKey9_Click);
+            // 
+            // bSendKey10
+            // 
+            this.bSendKey10.Enabled = false;
+            this.bSendKey10.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.bSendKey10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.bSendKey10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.bSendKey10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSendKey10.Location = new System.Drawing.Point(20, 331);
+            this.bSendKey10.Name = "bSendKey10";
+            this.bSendKey10.Size = new System.Drawing.Size(40, 26);
+            this.bSendKey10.TabIndex = 10;
+            this.bSendKey10.Text = "K10";
+            this.bSendKey10.UseVisualStyleBackColor = true;
+            this.bSendKey10.Click += new System.EventHandler(this.bSendKey10_Click);
+            // 
+            // miSendKey9
+            // 
+            this.miSendKey9.Enabled = false;
+            this.miSendKey9.Name = "miSendKey9";
+            this.miSendKey9.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D9)));
+            this.miSendKey9.Size = new System.Drawing.Size(173, 22);
+            this.miSendKey9.Text = "Send Key 9";
+            // 
+            // miSendKey10
+            // 
+            this.miSendKey10.Enabled = false;
+            this.miSendKey10.Name = "miSendKey10";
+            this.miSendKey10.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D0)));
+            this.miSendKey10.Size = new System.Drawing.Size(173, 22);
+            this.miSendKey10.Text = "Send Key 10";
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(784, 462);
+            this.ClientSize = new System.Drawing.Size(784, 549);
             this.Controls.Add(this.lState);
             this.Controls.Add(this.gBSignals);
             this.Controls.Add(this.gbTerminal);
             this.Controls.Add(this.gbSendMessage);
             this.Controls.Add(this.gbKeys);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.mainMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.mainMenu;
             this.MinimumSize = new System.Drawing.Size(730, 450);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SCOT - Simple COm Terminal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.gbKeys.ResumeLayout(false);
             this.gbSendMessage.ResumeLayout(false);
             this.gbSendMessage.PerformLayout();
@@ -831,7 +828,7 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem miConnection;
         private System.Windows.Forms.ToolStripMenuItem miComPort;
         private System.Windows.Forms.ToolStripMenuItem miOpenPort;
@@ -867,12 +864,6 @@
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Button bSendMessage;
         private System.Windows.Forms.TextBox tbMessage;
-        private System.Windows.Forms.ToolStripMenuItem miNewConnection;
-        private System.Windows.Forms.ToolStripMenuItem miOpenConnection;
-        private System.Windows.Forms.ToolStripMenuItem miCloseConnection;
-        private System.Windows.Forms.ToolStripMenuItem miSaveConnection;
-        private System.Windows.Forms.ToolStripMenuItem miSaveAsConnection;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripMenuItem miExit;
         private System.Windows.Forms.Label lHelpMessage;
         private System.Windows.Forms.GroupBox gbKeys;
@@ -897,6 +888,11 @@
         private System.Windows.Forms.SaveFileDialog saveKeysFileDialog;
         private System.Windows.Forms.PrintDialog printDialog;
         private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.Timer tReception;
+        private System.Windows.Forms.Button bSendKey10;
+        private System.Windows.Forms.Button bSendKey9;
+        private System.Windows.Forms.ToolStripMenuItem miSendKey10;
+        private System.Windows.Forms.ToolStripMenuItem miSendKey9;
     }
 }
 

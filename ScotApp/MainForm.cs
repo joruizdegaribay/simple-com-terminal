@@ -20,7 +20,6 @@ namespace ScotApp
         public MainForm()
         {
             InitializeComponent();
-            this.comPort.DataReceived += comPort_DataReceived;
         }
 
         #region Eventos del formulario
@@ -53,31 +52,6 @@ namespace ScotApp
         #endregion
 
         #region Eventos del menú principal
-
-        private void miNewConnection_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void miOpenConnection_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void miCloseConnection_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void miSaveConnection_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void miSaveAsConnection_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void miPrintTerminal_Click(object sender, EventArgs e)
         {
@@ -125,7 +99,10 @@ namespace ScotApp
                     this.miSendKey6.Enabled = this.bSendKey6.Enabled = true;
                     this.miSendKey7.Enabled = this.bSendKey7.Enabled = true;
                     this.miSendKey8.Enabled = this.bSendKey8.Enabled = true;
+                    this.miSendKey9.Enabled = this.bSendKey9.Enabled = true;
+                    this.miSendKey10.Enabled = this.bSendKey10.Enabled = true;
                     this.bSendMessage.Enabled = true;
+                    this.tReception.Enabled = true;
                     this.lState.Text = "Com Port Opened: " + this.comPort.PortName + " - " + this.comPort.BaudRate.ToString();
                     break;
                 }
@@ -309,6 +286,16 @@ namespace ScotApp
             this.sendMessage(PushKeys.Default.KEY_8);
         }
 
+        private void bSendKey9_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_9);
+        }
+
+        private void bSendKey10_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_10);
+        }
+
         private void bSetPushKeys_Click(object sender, EventArgs e)
         {
             this.setPushKeys();
@@ -351,6 +338,16 @@ namespace ScotApp
 
         #endregion
 
+        #region Recepción de Datos
+
+        private void tReception_Tick(object sender, EventArgs e)
+        {
+            if (this.comPort.BytesToRead != 0)
+                this.printToTerminal(this.comPort.ReadExisting());
+        }
+
+        #endregion
+
         #region Eventos de los controles del terminal
 
         private void cbLocalEcho_CheckedChanged(object sender, EventArgs e)
@@ -389,23 +386,6 @@ namespace ScotApp
 
         #endregion
 
-        #region Eventos del puerto serie
-
-        void comPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-            if ((this.comPort.BytesToRead != 0) && this.InvokeRequired)
-                this.Invoke(new SerialDataReceivedEventHandler(this.comPort_DataReceived), new object[] { sender, e });
-            else
-                while (this.comPort.BytesToRead != 0)
-                {
-                    byte[] data = new byte[50];
-                    int length = this.comPort.Read(data, 0, 50);
-                    this.printToTerminal(data, length);
-                }
-        }
-
-        #endregion
-
         #region Eventos de impresión
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
@@ -439,6 +419,7 @@ namespace ScotApp
 
         private void closeComPort()
         {
+            this.tReception.Enabled = false;
             try
             {
                 this.comPort.Close();
@@ -480,6 +461,8 @@ namespace ScotApp
             this.toolTip.SetToolTip(this.bSendKey6, PushKeys.Default.KEY_6);
             this.toolTip.SetToolTip(this.bSendKey7, PushKeys.Default.KEY_7);
             this.toolTip.SetToolTip(this.bSendKey8, PushKeys.Default.KEY_8);
+            this.toolTip.SetToolTip(this.bSendKey9, PushKeys.Default.KEY_9);
+            this.toolTip.SetToolTip(this.bSendKey10, PushKeys.Default.KEY_10);
         }
 
         private void setPushKeys()
@@ -522,7 +505,7 @@ namespace ScotApp
             {
                 this.comPort.Write(dataToSend, 0, j);
                 if (this.cbLocalEcho.Checked)
-                    this.printToTerminal(dataToSend, j);
+                    this.printToTerminal(message);
                 return true;
             }
             catch
@@ -533,22 +516,19 @@ namespace ScotApp
             }
         }
 
-        private void printToTerminal(byte[] dataToPrint, int lenght)
+        private void printToTerminal(string dataToPrint)
         {
-            for (int i = 0; i < lenght; i++)
+            string temp = "";
+            for (int i = 0; i < dataToPrint.Length; i++)
             {
                 if (this.rbOff.Checked)
-                {
-                    if (dataToPrint[i] == 13)
-                        this.tbTerminal.Text += "\r\n";
-                    else
-                        this.tbTerminal.Text += (char)dataToPrint[i];
-                }
+                    temp += (char)dataToPrint[i];
                 else if ((this.rbNonAscii.Checked) && !char.IsControl((char)dataToPrint[i]))
-                    this.tbTerminal.Text += (char)dataToPrint[i];
+                    temp += (char)dataToPrint[i];
                 else
-                    this.tbTerminal.Text += "<" + this.byteToHex(dataToPrint[i]) + ">";
+                    temp += "<" + this.byteToHex((byte)dataToPrint[i]) + ">";
             }
+            this.tbTerminal.Text += temp;
             //move the caret to the end of the text
             this.tbTerminal.SelectionStart = this.tbTerminal.TextLength;
             //scroll to the caret

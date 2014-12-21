@@ -7,7 +7,7 @@ namespace ScotApp.Forms
     {
         #region Private atributes
 
-        private bool[] messageValidated = new bool[] { true, true, true, true, true, true, true, true };
+        private bool[] messageValidated = new bool[] { true, true, true, true, true, true, true, true, true, true };
 
         #endregion
 
@@ -26,6 +26,8 @@ namespace ScotApp.Forms
             this.tbKey6.Text = PushKeys.Default.KEY_6;
             this.tbKey7.Text = PushKeys.Default.KEY_7;
             this.tbKey8.Text = PushKeys.Default.KEY_8;
+            this.tbKey9.Text = PushKeys.Default.KEY_9;
+            this.tbKey10.Text = PushKeys.Default.KEY_10;
         }
 
         private void bOk_Click(object sender, EventArgs e)
@@ -44,6 +46,8 @@ namespace ScotApp.Forms
             PushKeys.Default.KEY_6 = this.tbKey6.Text;
             PushKeys.Default.KEY_7 = this.tbKey7.Text;
             PushKeys.Default.KEY_8 = this.tbKey8.Text;
+            PushKeys.Default.KEY_9 = this.tbKey9.Text;
+            PushKeys.Default.KEY_10 = this.tbKey10.Text;
             PushKeys.Default.Save();
             this.DialogResult = DialogResult.OK;
         }
@@ -168,6 +172,34 @@ namespace ScotApp.Forms
             {
                 this.messageValidated[7] = false;
                 this.pbValidate8.Image = validateIcons.Images[1];
+            }
+        }
+
+        private void tbKey9_TextChanged(object sender, EventArgs e)
+        {
+            if (MainForm.ValidateMessage(this.tbKey9.Text))
+            {
+                this.messageValidated[8] = true;
+                this.pbValidate9.Image = validateIcons.Images[0];
+            }
+            else
+            {
+                this.messageValidated[8] = false;
+                this.pbValidate9.Image = validateIcons.Images[1];
+            }
+        }
+
+        private void tbKey10_TextChanged(object sender, EventArgs e)
+        {
+            if (MainForm.ValidateMessage(this.tbKey10.Text))
+            {
+                this.messageValidated[9] = true;
+                this.pbValidate10.Image = validateIcons.Images[0];
+            }
+            else
+            {
+                this.messageValidated[9] = false;
+                this.pbValidate10.Image = validateIcons.Images[1];
             }
         }
     }
