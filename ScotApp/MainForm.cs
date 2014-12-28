@@ -170,10 +170,6 @@ namespace ScotApp
             this.setPushKeys();
         }
 
-        #endregion
-
-        #region Eventos de los botones de "keys"
-
         private void loadPushKeysToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (DialogResult.OK == this.openKeysFileDialog.ShowDialog())
@@ -215,6 +211,14 @@ namespace ScotApp
                         PushKeys.Default.KEY_8 = keysNodes[0]["PushKey8"].InnerText;
                     else
                         PushKeys.Default.KEY_8 = "";
+                    if (keysNodes[0]["PushKey9"] != null)
+                        PushKeys.Default.KEY_9 = keysNodes[0]["PushKey9"].InnerText;
+                    else
+                        PushKeys.Default.KEY_9 = "";
+                    if (keysNodes[0]["PushKey10"] != null)
+                        PushKeys.Default.KEY_10 = keysNodes[0]["PushKey10"].InnerText;
+                    else
+                        PushKeys.Default.KEY_10 = "";
                     PushKeys.Default.Save();
                     this.updateKeysToolTip();
                 }
@@ -240,11 +244,23 @@ namespace ScotApp
                 writer.WriteElementString("PushKey6", PushKeys.Default.KEY_6);
                 writer.WriteElementString("PushKey7", PushKeys.Default.KEY_7);
                 writer.WriteElementString("PushKey8", PushKeys.Default.KEY_8);
+                writer.WriteElementString("PushKey9", PushKeys.Default.KEY_9);
+                writer.WriteElementString("PushKey10", PushKeys.Default.KEY_10);
                 writer.WriteEndElement();
                 writer.WriteEndDocument();
                 writer.Close();
             }
         }
+
+        private void miAbout_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.ShowDialog();
+        }
+
+        #endregion
+
+        #region Button events
 
         private void bSendKey1_Click(object sender, EventArgs e)
         {
@@ -299,12 +315,6 @@ namespace ScotApp
         private void bSetPushKeys_Click(object sender, EventArgs e)
         {
             this.setPushKeys();
-        }
-
-        private void miAbout_Click(object sender, EventArgs e)
-        {
-            AboutForm aboutForm = new AboutForm();
-            aboutForm.ShowDialog();
         }
 
         #endregion
@@ -420,11 +430,11 @@ namespace ScotApp
         private void closeComPort()
         {
             this.tReception.Enabled = false;
-            try
-            {
-                this.comPort.Close();
-            }
-            catch { }
+                try
+                {
+                    this.comPort.Close();
+                }
+                catch { }
             this.miClosePort.Enabled = false;
             this.miDtr.Checked = this.cbDtr.Checked = false;
             this.miDtr.Enabled = this.cbDtr.Enabled = false;
@@ -438,6 +448,8 @@ namespace ScotApp
             this.miSendKey6.Enabled = this.bSendKey6.Enabled = false;
             this.miSendKey7.Enabled = this.bSendKey7.Enabled = false;
             this.miSendKey8.Enabled = this.bSendKey8.Enabled = false;
+            this.miSendKey9.Enabled = this.bSendKey9.Enabled = false;
+            this.miSendKey10.Enabled = this.bSendKey10.Enabled = false;
             this.bSendMessage.Enabled = false;
             this.lState.Text = "Com Port Closed";
         }
@@ -528,11 +540,7 @@ namespace ScotApp
                 else
                     temp += "<" + this.byteToHex((byte)dataToPrint[i]) + ">";
             }
-            this.tbTerminal.Text += temp;
-            //move the caret to the end of the text
-            this.tbTerminal.SelectionStart = this.tbTerminal.TextLength;
-            //scroll to the caret
-            this.tbTerminal.ScrollToCaret();
+            this.tbTerminal.AppendText(temp);
         }
 
         private string byteToHex(byte value)
@@ -564,7 +572,7 @@ namespace ScotApp
                     this.cbDtr.Checked = true;
                 }
             }
-            catch (Exception e)
+            catch
             {
                 this.closeComPort();
                 MessageBox.Show("Dtr pin could not be modified.\r\nSerial Port has had an error and it must be closed.", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -590,7 +598,7 @@ namespace ScotApp
                     this.cbRts.Checked = true;
                 }
             }
-            catch (Exception e)
+            catch
             {
                 this.closeComPort();
                 MessageBox.Show("Rts pin could not be modified.\r\nSerial Port has had an error and it must be closed.", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -598,7 +606,6 @@ namespace ScotApp
             this.cbRts.CheckedChanged += this.cbRts_CheckedChanged;
         }
         
-
         #endregion
 
         #region Métodos Estáticos
