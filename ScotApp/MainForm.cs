@@ -352,8 +352,15 @@ namespace ScotApp
 
         private void tReception_Tick(object sender, EventArgs e)
         {
-            if (this.comPort.BytesToRead != 0)
-                this.printToTerminal(this.comPort.ReadExisting());
+            try
+            {
+                if (this.comPort.BytesToRead != 0)
+                    this.printToTerminal(this.comPort.ReadExisting());
+            }
+            catch
+            {
+                this.closeComPort();
+            }
         }
 
         #endregion
@@ -490,6 +497,14 @@ namespace ScotApp
                 MessageBox.Show("Message format is not correct", "SCOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (this.sendMessage(message))
                 this.tbMessage.Text = "";
+        }
+
+        private void sendCharacter(char character)
+        {
+            string temp = character.ToString();
+            this.comPort.Write(temp);
+                if (this.cbLocalEcho.Checked)
+                    this.printToTerminal(temp);
         }
 
         private bool sendMessage(string message)
@@ -638,5 +653,22 @@ namespace ScotApp
         }
 
         #endregion
+
+        private void tbTerminal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void tbTerminal_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                this.sendCharacter((char)0x0D);
+            else if (e.KeyCode == Keys.Escape)
+                this.sendCharacter((char)0x1B);
+            else if (e.Control && (e.KeyCode == Keys.Z))
+                this.sendCharacter((char)0x1A);
+            else if (!e.Alt && !e.Control)
+                this.sendCharacter((char)e.KeyValue);
+        }
     }
 }
