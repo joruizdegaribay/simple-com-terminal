@@ -338,7 +338,7 @@ namespace ScotApp
         private void tbMessage_KeyDown(object sender, KeyEventArgs e)
         {
             if ((this.bSendMessage.Enabled) && (e.KeyCode == Keys.Enter))
-                this.sendLiteralMessage(this.tbMessage.Text);
+                this.sendLiteralMessage(this.tbMessage.Text+"\\0D");
         }
 
         private void bSendMessage_Click(object sender, EventArgs e)
@@ -656,19 +656,8 @@ namespace ScotApp
 
         private void tbTerminal_KeyPress(object sender, KeyPressEventArgs e)
         {
+            this.sendCharacter(e.KeyChar);
             e.Handled = true;
-        }
-
-        private void tbTerminal_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                this.sendCharacter((char)0x0D);
-            else if (e.KeyCode == Keys.Escape)
-                this.sendCharacter((char)0x1B);
-            else if (e.Control && (e.KeyCode == Keys.Z))
-                this.sendCharacter((char)0x1A);
-            else if (!e.Alt && !e.Control)
-                this.sendCharacter((char)e.KeyValue);
         }
     }
 }

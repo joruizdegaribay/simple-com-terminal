@@ -518,7 +518,7 @@
             this.bClearTerminal.Name = "bClearTerminal";
             this.bClearTerminal.Size = new System.Drawing.Size(32, 30);
             this.bClearTerminal.TabIndex = 4;
-            this.toolTip.SetToolTip(this.bClearTerminal, "Send message over serial port");
+            this.toolTip.SetToolTip(this.bClearTerminal, "Clear Terminal");
             this.bClearTerminal.UseVisualStyleBackColor = true;
             this.bClearTerminal.Click += new System.EventHandler(this.bClearTerminal_Click);
             // 
@@ -535,7 +535,7 @@
             this.bPrintTerminal.Name = "bPrintTerminal";
             this.bPrintTerminal.Size = new System.Drawing.Size(32, 30);
             this.bPrintTerminal.TabIndex = 3;
-            this.toolTip.SetToolTip(this.bPrintTerminal, "Send message over serial port");
+            this.toolTip.SetToolTip(this.bPrintTerminal, "Print Terminal");
             this.bPrintTerminal.UseVisualStyleBackColor = true;
             this.bPrintTerminal.Click += new System.EventHandler(this.bPrintTerminal_Click);
             // 
@@ -712,7 +712,6 @@
             this.tbTerminal.Size = new System.Drawing.Size(530, 218);
             this.tbTerminal.TabIndex = 0;
             this.tbTerminal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminal_KeyPress);
-            this.tbTerminal.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.tbTerminal_PreviewKeyDown);
             // 
             // cbLocalEcho
             // 

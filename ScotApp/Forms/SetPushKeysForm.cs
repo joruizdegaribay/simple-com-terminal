@@ -65,7 +65,12 @@ namespace ScotApp.Forms
 
         private void tbKey1_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey1.Text))
+            if (this.tbKey1.Text == "")
+            {
+                this.messageValidated[0] = true;
+                this.pbValidate1.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey1.Text))
             {
                 this.messageValidated[0] = true;
                 this.pbValidate1.Image = validateIcons.Images[0];
@@ -79,7 +84,12 @@ namespace ScotApp.Forms
 
         private void tbKey2_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey2.Text))
+            if (this.tbKey2.Text == "")
+            {
+                this.messageValidated[1] = true;
+                this.pbValidate2.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey2.Text))
             {
                 this.messageValidated[1] = true;
                 this.pbValidate2.Image = validateIcons.Images[0];
@@ -93,7 +103,12 @@ namespace ScotApp.Forms
 
         private void tbKey3_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey3.Text))
+            if (this.tbKey3.Text == "")
+            {
+                this.messageValidated[2] = true;
+                this.pbValidate3.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey3.Text))
             {
                 this.messageValidated[2] = true;
                 this.pbValidate3.Image = validateIcons.Images[0];
@@ -107,7 +122,12 @@ namespace ScotApp.Forms
 
         private void tbKey4_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey4.Text))
+            if (this.tbKey4.Text == "")
+            {
+                this.messageValidated[3] = true;
+                this.pbValidate4.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey4.Text))
             {
                 this.messageValidated[3] = true;
                 this.pbValidate4.Image = validateIcons.Images[0];
@@ -121,7 +141,12 @@ namespace ScotApp.Forms
 
         private void tbKey5_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey5.Text))
+            if (this.tbKey5.Text == "")
+            {
+                this.messageValidated[4] = true;
+                this.pbValidate5.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey5.Text))
             {
                 this.messageValidated[4] = true;
                 this.pbValidate5.Image = validateIcons.Images[0];
@@ -135,7 +160,12 @@ namespace ScotApp.Forms
 
         private void tbKey6_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey6.Text))
+            if (this.tbKey6.Text == "")
+            {
+                this.messageValidated[5] = true;
+                this.pbValidate6.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey6.Text))
             {
                 this.messageValidated[5] = true;
                 this.pbValidate6.Image = validateIcons.Images[0];
@@ -149,7 +179,12 @@ namespace ScotApp.Forms
 
         private void tbKey7_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey7.Text))
+            if (this.tbKey7.Text == "")
+            {
+                this.messageValidated[6] = true;
+                this.pbValidate7.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey7.Text))
             {
                 this.messageValidated[6] = true;
                 this.pbValidate7.Image = validateIcons.Images[0];
@@ -163,7 +198,12 @@ namespace ScotApp.Forms
 
         private void tbKey8_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey8.Text))
+            if (this.tbKey8.Text == "")
+            {
+                this.messageValidated[7] = true;
+                this.pbValidate8.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey8.Text))
             {
                 this.messageValidated[7] = true;
                 this.pbValidate8.Image = validateIcons.Images[0];
@@ -177,7 +217,12 @@ namespace ScotApp.Forms
 
         private void tbKey9_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey9.Text))
+            if (this.tbKey9.Text == "")
+            {
+                this.messageValidated[8] = true;
+                this.pbValidate9.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey9.Text))
             {
                 this.messageValidated[8] = true;
                 this.pbValidate9.Image = validateIcons.Images[0];
@@ -191,7 +236,12 @@ namespace ScotApp.Forms
 
         private void tbKey10_TextChanged(object sender, EventArgs e)
         {
-            if (MainForm.ValidateMessage(this.tbKey10.Text))
+            if (this.tbKey10.Text == "")
+            {
+                this.messageValidated[9] = true;
+                this.pbValidate10.Image = null;
+            }
+            else if (MainForm.ValidateMessage(this.tbKey10.Text))
             {
                 this.messageValidated[9] = true;
                 this.pbValidate10.Image = validateIcons.Images[0];
