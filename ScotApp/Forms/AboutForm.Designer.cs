@@ -41,7 +41,7 @@
             this.label4.Location = new System.Drawing.Point(50, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(163, 30);
-            this.label4.TabIndex = 9;
+            this.label4.TabIndex = 3;
             this.label4.Text = "Desarrollado por:\r\n     Jonathan Ruiz de Garibay\r\n";
             // 
             // label1
@@ -50,8 +50,8 @@
             this.label1.Location = new System.Drawing.Point(50, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Simple COm Terminal V1.2.1";
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Simple COm Terminal V1.3.0";
             // 
             // linkLabel1
             // 
@@ -59,7 +59,7 @@
             this.linkLabel1.Location = new System.Drawing.Point(50, 45);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(178, 15);
-            this.linkLabel1.TabIndex = 11;
+            this.linkLabel1.TabIndex = 2;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "jonathan.garibay@hotmail.com";
             // 
@@ -73,7 +73,7 @@
             this.bOk.Location = new System.Drawing.Point(212, 124);
             this.bOk.Name = "bOk";
             this.bOk.Size = new System.Drawing.Size(80, 26);
-            this.bOk.TabIndex = 18;
+            this.bOk.TabIndex = 0;
             this.bOk.Text = "OK";
             this.bOk.UseVisualStyleBackColor = true;
             this.bOk.Click += new System.EventHandler(this.bOk_Click);

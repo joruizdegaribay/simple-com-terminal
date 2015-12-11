@@ -1,8 +1,5 @@
 ﻿using System;
 using System.IO.Ports;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ScotApp.Forms
@@ -63,6 +60,20 @@ namespace ScotApp.Forms
             }
         }
 
+        private void InitComPortForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void cbPortName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cbPortName.SelectedIndex != -1)
+                this.bOpen.Enabled = true;
+            else
+                this.bOpen.Enabled = false;
+        }
+
         private void bOpen_Click(object sender, EventArgs e)
         {
             ComPort.Default.PORT_NAME = (string)this.cbPortName.SelectedItem;
@@ -95,20 +106,6 @@ namespace ScotApp.Forms
         private void bCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void InitComPortForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                this.DialogResult = DialogResult.Cancel;
-        }
-
-        private void cbPortName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (this.cbPortName.SelectedIndex != -1)
-                this.bOpen.Enabled = true;
-            else
-                this.bOpen.Enabled = false;
         }
     }
 }

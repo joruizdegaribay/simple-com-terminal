@@ -58,7 +58,7 @@
             this.lPortName.Location = new System.Drawing.Point(29, 25);
             this.lPortName.Name = "lPortName";
             this.lPortName.Size = new System.Drawing.Size(64, 15);
-            this.lPortName.TabIndex = 0;
+            this.lPortName.TabIndex = 1;
             this.lPortName.Text = "Port name";
             // 
             // lBaudRate
@@ -67,7 +67,7 @@
             this.lBaudRate.Location = new System.Drawing.Point(149, 25);
             this.lBaudRate.Name = "lBaudRate";
             this.lBaudRate.Size = new System.Drawing.Size(65, 15);
-            this.lBaudRate.TabIndex = 1;
+            this.lBaudRate.TabIndex = 3;
             this.lBaudRate.Text = "Baud Rate";
             // 
             // cbPortName
@@ -100,7 +100,7 @@
             this.cbBaudRate.Location = new System.Drawing.Point(149, 43);
             this.cbBaudRate.Name = "cbBaudRate";
             this.cbBaudRate.Size = new System.Drawing.Size(90, 23);
-            this.cbBaudRate.TabIndex = 3;
+            this.cbBaudRate.TabIndex = 4;
             // 
             // gbDataBits
             // 
@@ -110,7 +110,7 @@
             this.gbDataBits.Location = new System.Drawing.Point(29, 77);
             this.gbDataBits.Name = "gbDataBits";
             this.gbDataBits.Size = new System.Drawing.Size(190, 50);
-            this.gbDataBits.TabIndex = 4;
+            this.gbDataBits.TabIndex = 5;
             this.gbDataBits.TabStop = false;
             this.gbDataBits.Text = "Data Bits";
             // 
@@ -120,7 +120,7 @@
             this.rb7.Location = new System.Drawing.Point(80, 20);
             this.rb7.Name = "rb7";
             this.rb7.Size = new System.Drawing.Size(32, 19);
-            this.rb7.TabIndex = 7;
+            this.rb7.TabIndex = 1;
             this.rb7.TabStop = true;
             this.rb7.Text = "7";
             this.rb7.UseVisualStyleBackColor = true;
@@ -131,7 +131,7 @@
             this.rb8.Location = new System.Drawing.Point(130, 20);
             this.rb8.Name = "rb8";
             this.rb8.Size = new System.Drawing.Size(32, 19);
-            this.rb8.TabIndex = 6;
+            this.rb8.TabIndex = 2;
             this.rb8.TabStop = true;
             this.rb8.Text = "8";
             this.rb8.UseVisualStyleBackColor = true;
@@ -142,7 +142,7 @@
             this.rb6.Location = new System.Drawing.Point(30, 20);
             this.rb6.Name = "rb6";
             this.rb6.Size = new System.Drawing.Size(32, 19);
-            this.rb6.TabIndex = 5;
+            this.rb6.TabIndex = 0;
             this.rb6.TabStop = true;
             this.rb6.Text = "6";
             this.rb6.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@
             this.gbStopBits.Location = new System.Drawing.Point(29, 138);
             this.gbStopBits.Name = "gbStopBits";
             this.gbStopBits.Size = new System.Drawing.Size(190, 50);
-            this.gbStopBits.TabIndex = 8;
+            this.gbStopBits.TabIndex = 6;
             this.gbStopBits.TabStop = false;
             this.gbStopBits.Text = "Stop Bits";
             // 
@@ -165,7 +165,7 @@
             this.rb15.Location = new System.Drawing.Point(80, 20);
             this.rb15.Name = "rb15";
             this.rb15.Size = new System.Drawing.Size(42, 19);
-            this.rb15.TabIndex = 7;
+            this.rb15.TabIndex = 1;
             this.rb15.TabStop = true;
             this.rb15.Text = "1.5";
             this.rb15.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             this.rb2.Location = new System.Drawing.Point(130, 20);
             this.rb2.Name = "rb2";
             this.rb2.Size = new System.Drawing.Size(32, 19);
-            this.rb2.TabIndex = 6;
+            this.rb2.TabIndex = 2;
             this.rb2.TabStop = true;
             this.rb2.Text = "2";
             this.rb2.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             this.rb1.Location = new System.Drawing.Point(30, 20);
             this.rb1.Name = "rb1";
             this.rb1.Size = new System.Drawing.Size(32, 19);
-            this.rb1.TabIndex = 5;
+            this.rb1.TabIndex = 0;
             this.rb1.TabStop = true;
             this.rb1.Text = "1";
             this.rb1.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@
             this.gbParity.Location = new System.Drawing.Point(235, 77);
             this.gbParity.Name = "gbParity";
             this.gbParity.Size = new System.Drawing.Size(120, 111);
-            this.gbParity.TabIndex = 8;
+            this.gbParity.TabIndex = 7;
             this.gbParity.TabStop = false;
             this.gbParity.Text = "Parity";
             // 
@@ -210,7 +210,7 @@
             this.rbOdd.Location = new System.Drawing.Point(30, 50);
             this.rbOdd.Name = "rbOdd";
             this.rbOdd.Size = new System.Drawing.Size(48, 19);
-            this.rbOdd.TabIndex = 7;
+            this.rbOdd.TabIndex = 1;
             this.rbOdd.TabStop = true;
             this.rbOdd.Text = "Odd";
             this.rbOdd.UseVisualStyleBackColor = true;
@@ -221,7 +221,7 @@
             this.rbEven.Location = new System.Drawing.Point(30, 75);
             this.rbEven.Name = "rbEven";
             this.rbEven.Size = new System.Drawing.Size(52, 19);
-            this.rbEven.TabIndex = 6;
+            this.rbEven.TabIndex = 2;
             this.rbEven.TabStop = true;
             this.rbEven.Text = "Even";
             this.rbEven.UseVisualStyleBackColor = true;
@@ -232,7 +232,7 @@
             this.rbNone.Location = new System.Drawing.Point(30, 25);
             this.rbNone.Name = "rbNone";
             this.rbNone.Size = new System.Drawing.Size(55, 19);
-            this.rbNone.TabIndex = 5;
+            this.rbNone.TabIndex = 0;
             this.rbNone.TabStop = true;
             this.rbNone.Text = "None";
             this.rbNone.UseVisualStyleBackColor = true;
@@ -247,7 +247,7 @@
             this.bCancel.Location = new System.Drawing.Point(292, 214);
             this.bCancel.Name = "bCancel";
             this.bCancel.Size = new System.Drawing.Size(80, 26);
-            this.bCancel.TabIndex = 20;
+            this.bCancel.TabIndex = 0;
             this.bCancel.Text = "Cancel";
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
@@ -263,7 +263,7 @@
             this.bOpen.Location = new System.Drawing.Point(206, 214);
             this.bOpen.Name = "bOpen";
             this.bOpen.Size = new System.Drawing.Size(80, 26);
-            this.bOpen.TabIndex = 19;
+            this.bOpen.TabIndex = 8;
             this.bOpen.Text = "Open";
             this.bOpen.UseVisualStyleBackColor = true;
             this.bOpen.Click += new System.EventHandler(this.bOpen_Click);

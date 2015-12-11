@@ -318,6 +318,7 @@
             this.miSendKey9.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D9)));
             this.miSendKey9.Size = new System.Drawing.Size(173, 22);
             this.miSendKey9.Text = "Send Key 9";
+            this.miSendKey9.Click += new System.EventHandler(this.miSendKey9_Click);
             // 
             // miSendKey10
             // 
@@ -326,6 +327,7 @@
             this.miSendKey10.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D0)));
             this.miSendKey10.Size = new System.Drawing.Size(173, 22);
             this.miSendKey10.Text = "Send Key 10";
+            this.miSendKey10.Click += new System.EventHandler(this.miSendKey10_Click);
             // 
             // toolStripSeparator1
             // 

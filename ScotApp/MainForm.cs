@@ -125,51 +125,6 @@ namespace ScotApp
             this.toggleRts();
         }
 
-        private void miSendKey1_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_1);
-        }
-
-        private void miSendKey2_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_2);
-        }
-
-        private void miSendKey3_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_3);
-        }
-
-        private void miSendKey4_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_4);
-        }
-
-        private void miSendKey5_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_5);
-        }
-
-        private void miSendKey6_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_6);
-        }
-
-        private void miSendKey7_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_7);
-        }
-
-        private void miSendKey8_Click(object sender, EventArgs e)
-        {
-            this.sendMessage(PushKeys.Default.KEY_8);
-        }
-
-        private void miSetPushKeys_Click(object sender, EventArgs e)
-        {
-            this.setPushKeys();
-        }
-
         private void loadPushKeysToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (DialogResult.OK == this.openKeysFileDialog.ShowDialog())
@@ -251,6 +206,62 @@ namespace ScotApp
                 writer.Close();
             }
         }
+
+        private void miSendKey1_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_1);
+        }
+
+        private void miSendKey2_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_2);
+        }
+
+        private void miSendKey3_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_3);
+        }
+
+        private void miSendKey4_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_4);
+        }
+
+        private void miSendKey5_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_5);
+        }
+
+        private void miSendKey6_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_6);
+        }
+
+        private void miSendKey7_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_7);
+        }
+
+        private void miSendKey8_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_8);
+        }
+
+        private void miSendKey9_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_9);
+        }
+
+        private void miSendKey10_Click(object sender, EventArgs e)
+        {
+            this.sendMessage(PushKeys.Default.KEY_10);
+        }
+
+        private void miSetPushKeys_Click(object sender, EventArgs e)
+        {
+            this.setPushKeys();
+        }
+                
 
         private void miAbout_Click(object sender, EventArgs e)
         {
@@ -354,8 +365,12 @@ namespace ScotApp
         {
             try
             {
-                if (this.comPort.BytesToRead != 0)
-                    this.printToTerminal(this.comPort.ReadExisting());
+                while (this.comPort.BytesToRead != 0)
+                {
+                    byte[] byteRead = new byte[512];
+                    int numBytes = this.comPort.Read(byteRead, 0, 512);
+                    this.printToTerminal(byteRead, numBytes);
+                }
             }
             catch
             {
@@ -366,6 +381,12 @@ namespace ScotApp
         #endregion
 
         #region Eventos de los controles del terminal
+
+        private void tbTerminal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.sendCharacter((byte)e.KeyChar);
+            e.Handled = true;
+        }
 
         private void cbLocalEcho_CheckedChanged(object sender, EventArgs e)
         {
@@ -499,12 +520,11 @@ namespace ScotApp
                 this.tbMessage.Text = "";
         }
 
-        private void sendCharacter(char character)
+        private void sendCharacter(byte character)
         {
-            string temp = character.ToString();
-            this.comPort.Write(temp);
-                if (this.cbLocalEcho.Checked)
-                    this.printToTerminal(temp);
+            this.comPort.Write(new byte[] { character }, 0, 1);
+            if (this.cbLocalEcho.Checked)
+                this.printToTerminal(new byte[] { character }, 1);
         }
 
         private bool sendMessage(string message)
@@ -532,7 +552,7 @@ namespace ScotApp
             {
                 this.comPort.Write(dataToSend, 0, j);
                 if (this.cbLocalEcho.Checked)
-                    this.printToTerminal(message);
+                    this.printToTerminal(dataToSend, j);
                 return true;
             }
             catch
@@ -543,10 +563,10 @@ namespace ScotApp
             }
         }
 
-        private void printToTerminal(string dataToPrint)
+        private void printToTerminal(byte[] dataToPrint, int length)
         {
             string temp = "";
-            for (int i = 0; i < dataToPrint.Length; i++)
+            for (int i = 0; i < length; i++)
             {
                 if (this.rbOff.Checked)
                     temp += (char)dataToPrint[i];
@@ -653,11 +673,5 @@ namespace ScotApp
         }
 
         #endregion
-
-        private void tbTerminal_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.sendCharacter(e.KeyChar);
-            e.Handled = true;
-        }
     }
 }

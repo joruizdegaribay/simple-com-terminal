@@ -9,3 +9,15 @@ C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotAp
 C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.csproj.GenerateResource.Cache
 C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\Simple COm Terminal.exe
 C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\Simple COm Terminal.pdb
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\bin\Release\Simple COm Terminal.exe.config
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\bin\Release\Simple COm Terminal.exe
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\bin\Release\Simple COm Terminal.pdb
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.csprojResolveAssemblyReference.cache
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.Forms.AboutForm.resources
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.Forms.InitComPortForm.resources
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.MainForm.resources
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.Properties.Resources.resources
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.Forms.SetPushKeysForm.resources
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.csproj.GenerateResource.Cache
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\Simple COm Terminal.exe
+C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\Simple COm Terminal.pdb
