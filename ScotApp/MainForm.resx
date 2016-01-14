@@ -123,9 +123,6 @@
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>210, 19</value>
   </metadata>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>210, 19</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="bClearTerminal.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -179,6 +176,19 @@
         MD/qp8SJamBgQAaIJ524trYWdXV1+JtYzBSWlpbfmpiY/GhsbPy9hYXFfYr7Y7Y5Bw3n3c+JczW7aXNz
         M5ycnIbINLampqa2zGKmsLOzE7a2toIGZV1QULAs7/OFhXINbGxs7N3c3ISjo6NkMFN+WDzg4uIiKB/8
         WVRUtEmhukn++L8ib9iMi4sbcXZ2/obXs854duI/54MZHrnw19AAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="bSearch.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1
+        MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACw4AAAsOAUC+4UEAAAGASURBVEhLrdRLKwZxFMfxcQu5
+        lKSUvAGXUopsWIgoKSXFRt6AywYhXgRKsmDHkiRbli5ZoWxYYUGISArfn55Ts/jPzD/Nrz7Fec6cmWfm
+        zBM4ko1uLOIAJ9jBDKrxr9TiCD8RnrCAXHinCXewId+4xCluMzWzh2Ikpgb30EEvWEYDcqCUog86iQ1f
+        RWzycAYb2oio6BZswYa3IzJdsMYlFRJSghuof1eFqOhrq+kLdSp4RBuiY55RroIrh1CTHpRWzSfN0DGi
+        h+6M9lQNx3//+UVraYPbVHBFq6MGrVShCh6x56KV1EmcmYOdvVcFj2xA/deIvJgqvEKNWrssxGUQdiGT
+        KsRlHta8iTK4oqHvUN85ChAbvST7sOH6irNoQT16sA77XPTmVSIxevdXED7Y5QJrmb8fMAKvdGAbjwgP
+        vILuaRH02/EG+2wK3qmAlr8V+pHKRzjDCJ+4H6llGjZYm9WJ1DIAuy0fGENq0XP5hF39OFLLKGzwkApp
+        ZgIMDYJfaFuBNBkvKVQAAAAASUVORK5CYII=
 </value>
   </data>
   <metadata name="openKeysFileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

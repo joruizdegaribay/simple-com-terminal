@@ -12,7 +12,6 @@ C:\Users\Jonathan\Dropbox\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotAp
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\bin\Release\Simple COm Terminal.exe.config
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\bin\Release\Simple COm Terminal.exe
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\bin\Release\Simple COm Terminal.pdb
-C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.csprojResolveAssemblyReference.cache
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.Forms.AboutForm.resources
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.Forms.InitComPortForm.resources
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Release\ScotApp.MainForm.resources

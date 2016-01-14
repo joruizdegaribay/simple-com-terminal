@@ -14,7 +14,9 @@ namespace ScotApp
         #region Atributes
 
         private SerialPort comPort = new SerialPort();
-        
+
+        int startPosition = 0;
+
         #endregion
 
         public MainForm()
@@ -101,6 +103,7 @@ namespace ScotApp
                     this.miSendKey8.Enabled = this.bSendKey8.Enabled = true;
                     this.miSendKey9.Enabled = this.bSendKey9.Enabled = true;
                     this.miSendKey10.Enabled = this.bSendKey10.Enabled = true;
+                    this.tbMessage.Enabled = true;
                     this.bSendMessage.Enabled = true;
                     this.tReception.Enabled = true;
                     this.lState.Text = "Com Port Opened: " + this.comPort.PortName + " - " + this.comPort.BaudRate.ToString();
@@ -382,6 +385,22 @@ namespace ScotApp
 
         #region Eventos de los controles del terminal
 
+        private void tBSearch_TextChanged(object sender, EventArgs e)
+        {
+            this.startPosition = 0;
+        }
+
+        private void tBSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                this.search(this.tBSearch.Text);
+        }
+
+        private void bSearch_Click(object sender, EventArgs e)
+        {
+            this.search(this.tBSearch.Text);
+        }
+
         private void tbTerminal_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.sendCharacter((byte)e.KeyChar);
@@ -420,6 +439,7 @@ namespace ScotApp
         private void bClearTerminal_Click(object sender, EventArgs e)
         {
             this.tbTerminal.Text = "";
+            this.startPosition = 0;
         }
 
         #endregion
@@ -478,8 +498,30 @@ namespace ScotApp
             this.miSendKey8.Enabled = this.bSendKey8.Enabled = false;
             this.miSendKey9.Enabled = this.bSendKey9.Enabled = false;
             this.miSendKey10.Enabled = this.bSendKey10.Enabled = false;
+            this.tbMessage.Enabled = true;
             this.bSendMessage.Enabled = false;
             this.lState.Text = "Com Port Closed";
+        }
+
+        private void search(string keyword)
+        {
+            //remove highlighted text
+            string temp = this.tbTerminal.Text;
+            this.tbTerminal.Text = "";
+            this.tbTerminal.Text = temp;
+            //
+            if (startPosition == 0)
+                startPosition = this.tbTerminal.Find(keyword, 0, RichTextBoxFinds.None);
+            else
+            {
+                startPosition = this.tbTerminal.Find(keyword, startPosition, RichTextBoxFinds.None);
+                if (startPosition == -1)
+                    startPosition = this.tbTerminal.Find(keyword, 0, RichTextBoxFinds.None);
+            }
+            this.tbTerminal.SelectionBackColor = Color.Red;
+            startPosition += keyword.Length;
+            if (startPosition > this.tbTerminal.Text.Length)
+                startPosition = 0;
         }
 
         private void printTerminal()

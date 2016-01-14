@@ -72,6 +72,7 @@
             this.bSendMessage = new System.Windows.Forms.Button();
             this.bClearTerminal = new System.Windows.Forms.Button();
             this.bPrintTerminal = new System.Windows.Forms.Button();
+            this.bSearch = new System.Windows.Forms.Button();
             this.tbMessage = new System.Windows.Forms.TextBox();
             this.lHelpMessage = new System.Windows.Forms.Label();
             this.gbKeys = new System.Windows.Forms.GroupBox();
@@ -79,12 +80,13 @@
             this.bSendKey9 = new System.Windows.Forms.Button();
             this.gbSendMessage = new System.Windows.Forms.GroupBox();
             this.gbTerminal = new System.Windows.Forms.GroupBox();
+            this.tbTerminal = new System.Windows.Forms.RichTextBox();
+            this.tBSearch = new System.Windows.Forms.TextBox();
             this.pHexLog = new System.Windows.Forms.Panel();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.rbNonAscii = new System.Windows.Forms.RadioButton();
             this.rbOff = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbTerminal = new System.Windows.Forms.TextBox();
             this.cbLocalEcho = new System.Windows.Forms.CheckBox();
             this.gBSignals = new System.Windows.Forms.GroupBox();
             this.cbRts = new System.Windows.Forms.CheckBox();
@@ -163,7 +165,7 @@
             // 
             this.miOpenPort.Name = "miOpenPort";
             this.miOpenPort.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.miOpenPort.Size = new System.Drawing.Size(122, 22);
+            this.miOpenPort.Size = new System.Drawing.Size(152, 22);
             this.miOpenPort.Text = "Open";
             this.miOpenPort.Click += new System.EventHandler(this.miOpenPort_Click);
             // 
@@ -171,21 +173,21 @@
             // 
             this.miClosePort.Enabled = false;
             this.miClosePort.Name = "miClosePort";
-            this.miClosePort.Size = new System.Drawing.Size(122, 22);
+            this.miClosePort.Size = new System.Drawing.Size(152, 22);
             this.miClosePort.Text = "Close";
             this.miClosePort.Click += new System.EventHandler(this.miClosePort_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(119, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
             // 
             // miDtr
             // 
             this.miDtr.Enabled = false;
             this.miDtr.Name = "miDtr";
             this.miDtr.ShortcutKeys = System.Windows.Forms.Keys.F7;
-            this.miDtr.Size = new System.Drawing.Size(122, 22);
+            this.miDtr.Size = new System.Drawing.Size(152, 22);
             this.miDtr.Text = "DTR";
             this.miDtr.Click += new System.EventHandler(this.miDtr_Click);
             // 
@@ -194,7 +196,7 @@
             this.miRts.Enabled = false;
             this.miRts.Name = "miRts";
             this.miRts.ShortcutKeys = System.Windows.Forms.Keys.F8;
-            this.miRts.Size = new System.Drawing.Size(122, 22);
+            this.miRts.Size = new System.Drawing.Size(152, 22);
             this.miRts.Text = "RTS";
             this.miRts.Click += new System.EventHandler(this.miRts_Click);
             // 
@@ -541,8 +543,26 @@
             this.bPrintTerminal.UseVisualStyleBackColor = true;
             this.bPrintTerminal.Click += new System.EventHandler(this.bPrintTerminal_Click);
             // 
+            // bSearch
+            // 
+            this.bSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSearch.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.bSearch.FlatAppearance.BorderSize = 0;
+            this.bSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
+            this.bSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.bSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bSearch.Image = ((System.Drawing.Image)(resources.GetObject("bSearch.Image")));
+            this.bSearch.Location = new System.Drawing.Point(447, 254);
+            this.bSearch.Name = "bSearch";
+            this.bSearch.Size = new System.Drawing.Size(32, 30);
+            this.bSearch.TabIndex = 5;
+            this.toolTip.SetToolTip(this.bSearch, "Search");
+            this.bSearch.UseVisualStyleBackColor = true;
+            this.bSearch.Click += new System.EventHandler(this.bSearch_Click);
+            // 
             // tbMessage
             // 
+            this.tbMessage.Enabled = false;
             this.tbMessage.Location = new System.Drawing.Point(25, 30);
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.Size = new System.Drawing.Size(350, 21);
@@ -630,10 +650,12 @@
             this.gbTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTerminal.Controls.Add(this.tbTerminal);
+            this.gbTerminal.Controls.Add(this.tBSearch);
+            this.gbTerminal.Controls.Add(this.bSearch);
             this.gbTerminal.Controls.Add(this.pHexLog);
             this.gbTerminal.Controls.Add(this.bPrintTerminal);
             this.gbTerminal.Controls.Add(this.bClearTerminal);
-            this.gbTerminal.Controls.Add(this.tbTerminal);
             this.gbTerminal.Controls.Add(this.cbLocalEcho);
             this.gbTerminal.Location = new System.Drawing.Point(115, 130);
             this.gbTerminal.Name = "gbTerminal";
@@ -642,14 +664,35 @@
             this.gbTerminal.TabStop = false;
             this.gbTerminal.Text = "Terminal";
             // 
+            // tbTerminal
+            // 
+            this.tbTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbTerminal.Location = new System.Drawing.Point(25, 25);
+            this.tbTerminal.Name = "tbTerminal";
+            this.tbTerminal.Size = new System.Drawing.Size(531, 218);
+            this.tbTerminal.TabIndex = 8;
+            this.tbTerminal.Text = "";
+            // 
+            // tBSearch
+            // 
+            this.tBSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tBSearch.Location = new System.Drawing.Point(341, 259);
+            this.tBSearch.Name = "tBSearch";
+            this.tBSearch.Size = new System.Drawing.Size(100, 21);
+            this.tBSearch.TabIndex = 3;
+            this.tBSearch.TextChanged += new System.EventHandler(this.tBSearch_TextChanged);
+            this.tBSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tBSearch_KeyDown);
+            // 
             // pHexLog
             // 
-            this.pHexLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pHexLog.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.pHexLog.Controls.Add(this.rbAll);
             this.pHexLog.Controls.Add(this.rbNonAscii);
             this.pHexLog.Controls.Add(this.rbOff);
             this.pHexLog.Controls.Add(this.label2);
-            this.pHexLog.Location = new System.Drawing.Point(150, 254);
+            this.pHexLog.Location = new System.Drawing.Point(127, 254);
             this.pHexLog.Name = "pHexLog";
             this.pHexLog.Size = new System.Drawing.Size(200, 50);
             this.pHexLog.TabIndex = 2;
@@ -699,27 +742,11 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Hex Log";
             // 
-            // tbTerminal
-            // 
-            this.tbTerminal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbTerminal.BackColor = System.Drawing.SystemColors.Window;
-            this.tbTerminal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.tbTerminal.Location = new System.Drawing.Point(25, 30);
-            this.tbTerminal.Multiline = true;
-            this.tbTerminal.Name = "tbTerminal";
-            this.tbTerminal.ReadOnly = true;
-            this.tbTerminal.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.tbTerminal.Size = new System.Drawing.Size(530, 218);
-            this.tbTerminal.TabIndex = 0;
-            this.tbTerminal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTerminal_KeyPress);
-            // 
             // cbLocalEcho
             // 
             this.cbLocalEcho.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cbLocalEcho.AutoSize = true;
-            this.cbLocalEcho.Location = new System.Drawing.Point(45, 255);
+            this.cbLocalEcho.Location = new System.Drawing.Point(25, 255);
             this.cbLocalEcho.Name = "cbLocalEcho";
             this.cbLocalEcho.Size = new System.Drawing.Size(87, 19);
             this.cbLocalEcho.TabIndex = 1;
@@ -895,7 +922,9 @@
         private System.Windows.Forms.Button bSendKey9;
         private System.Windows.Forms.ToolStripMenuItem miSendKey10;
         private System.Windows.Forms.ToolStripMenuItem miSendKey9;
-        private System.Windows.Forms.TextBox tbTerminal;
+        private System.Windows.Forms.RichTextBox tbTerminal;
+        private System.Windows.Forms.TextBox tBSearch;
+        private System.Windows.Forms.Button bSearch;
     }
 }
 

@@ -20,7 +20,6 @@ C:\Users\Jonathan\Dropbox\Proyecto - SCOT\02.Desarrollo\simple-com-terminal\Scot
 C:\Users\Jonathan\Dropbox\Proyecto - SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.csproj.GenerateResource.Cache
 C:\Users\Jonathan\Dropbox\Proyecto - SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.exe
 C:\Users\Jonathan\Dropbox\Proyecto - SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.pdb
-C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.csprojResolveAssemblyReference.cache
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Forms.AboutForm.resources
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.Forms.InitComPortForm.resources
 C:\Users\Jonathan\Google Drive\Proyecto.SCOT\02.Desarrollo\simple-com-terminal\ScotApp\obj\Debug\ScotApp.MainForm.resources
